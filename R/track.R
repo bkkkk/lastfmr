@@ -4,10 +4,11 @@
 #' @param artist Narrow your search by specifying an artist.
 #' @param page The page number ot fetch. Defaults to first page.
 #'
-#' @return Raw response object including results as dataframe
+#' @return A LastFM API object
+#' 
 #' @export
 fm_track_search <- function(track, artist = NULL, page = 1) {
-  lastfm_api(lastfm_query(
+  fm_api(fm_query(
     method = "track.search",
     track = track,
     artist = artist,

@@ -14,7 +14,7 @@ fm_user_get_top_artists(username, period = "7day", page = 1)
 \item{page}{(optional) The page number to fetch. Defaults to first page.}
 }
 \value{
-
+A LastFM API object
 }
 \description{
 Get the top artists listened to by a user. You can stipulate a time period. Sends the overall chart by default.

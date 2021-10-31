@@ -16,7 +16,7 @@ period over which to retrieve top tracks for.}
 \item{page}{The page number to fetch. Defaults to first page.}
 }
 \value{
-
+A LastFM API object
 }
 \description{
 Get the top tracks listened to by a user. You can stipulate a time period.

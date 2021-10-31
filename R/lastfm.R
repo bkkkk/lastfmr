@@ -1,4 +1,4 @@
-lastfm_api_key <- function() {
+fm_api_key <- function() {
   key <- Sys.getenv("LASTFM_KEY")
   if (identical(key, "")) {
     stop("LastFM API key not found. Please set env var LASTFM_KEY", call. = FALSE)
@@ -9,26 +9,41 @@ lastfm_api_key <- function() {
 
 #' Query a Last.FM endpoint.
 #'
-#' @param query A list of parameters that define the query. Use `lastfm_query`
+#' @param query A list of parameters that define the query. Use `fm_query`
 #'   to create an appopriate object.
 #'
-#' @return A LastFM response object including the response from the endpoint,
-#'   pagination information and the request.
+#' @return A LastFM API object.
+#' 
 #' @export
-lastfm_api <- function(query) {
+fm_api <- function(query, .limit = NULL) {
+  params <- prepare_query(query)
+  raw <- fm_make_request(params)
+  resp <- fm_parse_response(raw, params)
+  
+  while (fm_hasnext(resp)) {
+    resp2 <- fm_next(resp)
+    resp$result <- bind_rows(resp$result, resp2$result)
+    resp$attrs <- resp2$attrs
+    resp$request <- resp2$request
+  }
+  
+  resp
+}
+
+fm_make_request <- function(params) {
   baseurl <- "http://ws.audioscrobbler.com/2.0/?"
 
-  params <- prepare_query(query)
-
   url <- httr::modify_url(baseurl, query = add_headers(params))
-  resp <- httr::GET(url)
+  httr::GET(url)
+}
 
+fm_parse_response <- function(resp, params) {
   if (resp$status_code != 200) {
-    stop("Problem with calling the API - response: ", content(resp))
+    stop("Problem with calling the API - response: ", httr::content(resp))
   }
 
   json_response <- jsonlite::fromJSON(httr::content(resp, as = "text", encoding = "utf-8"))
-
+  
   structure(
     list(
       result = parse_result(json_response),
@@ -36,7 +51,7 @@ lastfm_api <- function(query) {
       response = resp,
       request = list(query = params)
     ),
-    class = "lastfm_api"
+    class = "fm_api"
   )
 }
 

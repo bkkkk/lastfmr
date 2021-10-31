@@ -27,7 +27,7 @@ or not the user has loved each track.}
 \item{page}{(optional) The page number to fetch. Defaults to first page.}
 }
 \value{
-LastFM API object
+A LastFM API object
 }
 \description{
 Get a list of the recent tracks listened to by this user.

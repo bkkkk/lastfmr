@@ -9,10 +9,10 @@
 #' @param extended (optional) Whether to include extended data in each artist, and whether
 #'   or not the user has loved each track.
 #'
-#' @return LastFM API object
+#' @return A LastFM API object
 #' @export
 fm_user_get_recent_tracks <- function(username, from = NULL, to = NULL, extended = 0, page = 1) {
-  lastfm_api(lastfm_query(
+  fm_api(fm_query(
     method = "user.getrecenttracks",
     username = username,
     from = from,
@@ -31,7 +31,7 @@ fm_user_get_recent_tracks <- function(username, from = NULL, to = NULL, extended
 #' @return A LastFM API object
 #' @export
 fm_user_get_top_albums <- function(username, period = "7day", page = 1) {
-  lastfm_api(lastfm_query(
+  fm_api(fm_query(
     method = "user.getTopAlbums",
     page = page,
     username = username
@@ -44,10 +44,10 @@ fm_user_get_top_albums <- function(username, period = "7day", page = 1) {
 #' @param period (optional) overall | 7day | 1month | 3month | 6month | 12month - The time period over which to retrieve top artists for.
 #' @param page (optional) The page number to fetch. Defaults to first page.
 #'
-#' @return
+#' @return A LastFM API object
 #' @export
 fm_user_get_top_artists <- function(username, period = "7day", page = 1) {
-  lastfm_api(lastfm_query(
+  fm_api(fm_query(
     method = "user.getTopArtists",
     username = username,
     page = page
@@ -62,10 +62,10 @@ fm_user_get_top_artists <- function(username, period = "7day", page = 1) {
 #'   period over which to retrieve top tracks for.
 #' @param page The page number to fetch. Defaults to first page.
 #'
-#' @return
+#' @return A LastFM API object
 #' @export
 fm_user_get_top_tracks <- function(username, period = "7day", page = 1) {
-  lastfm_api(lastfm_query(
+  fm_api(fm_query(
     method = "user.getTopTracks",
     username = username,
     page = page

@@ -14,7 +14,7 @@ fm_track_search(track, artist = NULL, page = 1)
 \item{page}{The page number ot fetch. Defaults to first page.}
 }
 \value{
-Raw response object including results as dataframe
+A LastFM API object
 }
 \description{
 Search for a track by track name. Returns track matches sorted by relevance.
