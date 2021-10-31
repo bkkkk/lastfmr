@@ -2,20 +2,18 @@
 % Please edit documentation in R/lastfm.R
 \name{lastfm_api}
 \alias{lastfm_api}
-\title{Title}
+\title{Query a Last.FM endpoint.}
 \usage{
 lastfm_api(query)
 }
 \arguments{
-\item{api_method}{}
-
-\item{startpage}{}
-
-\item{...}{}
+\item{query}{A list of parameters that define the query. Use `lastfm_query`
+to create an appopriate object.}
 }
 \value{
-
+A LastFM response object including the response from the endpoint,
+  pagination information and the request.
 }
 \description{
-Title
+Query a Last.FM endpoint.
 }

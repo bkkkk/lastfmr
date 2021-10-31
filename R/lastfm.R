@@ -7,30 +7,27 @@ lastfm_api_key <- function() {
   key
 }
 
-#' Title
+#' Query a Last.FM endpoint.
 #'
-#' @param api_method
-#' @param startpage
-#' @param ...
+#' @param query A list of parameters that define the query. Use `lastfm_query`
+#'   to create an appopriate object.
 #'
-#' @return
+#' @return A LastFM response object including the response from the endpoint,
+#'   pagination information and the request.
 #' @export
-#'
-#' @importFrom httr modify_url GET content
-#' @importFrom jsonlite fromJSON
 lastfm_api <- function(query) {
   baseurl <- "http://ws.audioscrobbler.com/2.0/?"
 
-  params <- append(list(limit = 50, format = "json", api_key = lastfm_api_key()), query)
+  params <- prepare_query(query)
 
-  url <- modify_url(baseurl, query = params)
-  resp <- GET(url)
+  url <- httr::modify_url(baseurl, query = add_headers(params))
+  resp <- httr::GET(url)
 
   if (resp$status_code != 200) {
     stop("Problem with calling the API - response: ", content(resp))
   }
 
-  json_response <- fromJSON(content(resp, as = "text", encoding = "utf-8"))
+  json_response <- jsonlite::fromJSON(httr::content(resp, as = "text", encoding = "utf-8"))
 
   structure(
     list(
@@ -43,7 +40,6 @@ lastfm_api <- function(query) {
   )
 }
 
-#' @importFrom tibble tibble
 parse_result <- function(resp) {
   tibble::tibble(resp[[1]][[1]])
 }
