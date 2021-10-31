@@ -7,7 +7,7 @@
 #' @return A LastFM API object
 #' 
 #' @export
-fm_track_search <- function(track, artist = NULL, page = 1) {
+raw_track_search <- function(track, artist = NULL, page = 1) {
   fm_api(fm_query(
     method = "track.search",
     track = track,
