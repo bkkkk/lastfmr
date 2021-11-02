@@ -7,7 +7,7 @@
 fm_api(query, .limit = NULL)
 }
 \arguments{
-\item{query}{A list of parameters that define the query. Use `fm_query`
+\item{query}{A list of parameters that define the query. Use \code{fm_query}
 to create an appopriate object.}
 }
 \value{

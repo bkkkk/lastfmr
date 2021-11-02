@@ -11,8 +11,8 @@ fm_api <- function(query, .limit = NULL) {
   raw <- fm_make_request(params)
   resp <- fm_parse_response(raw, params)
   
-  while (fm_hasnext(resp)) {
-    resp2 <- fm_next(resp)
+  while (has_next_page(resp)) {
+    resp2 <- get_next_page(resp)
     resp$result <- bind_rows(resp$result, resp2$result)
     resp$attrs <- resp2$attrs
     resp$request <- resp2$request
