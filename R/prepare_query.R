@@ -7,5 +7,5 @@ prepare_query <- function(q) {
 }
 
 add_headers <- function(q, limit = 50) {
-  append(q, list(limit = limit, format = "json", api_key = fm_api_key()))
+  append(q, list(limit = limit, format = "json", api_key = default_api_key()))
 }

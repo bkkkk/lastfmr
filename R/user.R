@@ -14,7 +14,7 @@
 #' @return A LastFM API object
 #' @export
 raw_user_get_recent_tracks <- function(username, from = NULL, to = NULL, extended = 0, page = 1) {
-  fm_api(fm_query(
+  lastfm_api(fm_query(
     method = "user.getrecenttracks",
     username = username,
     from = from,
@@ -35,7 +35,7 @@ raw_user_get_recent_tracks <- function(username, from = NULL, to = NULL, extende
 #' @return A LastFM API object
 #' @export
 raw_user_get_top_albums <- function(username, period = "7day", page = 1) {
-  fm_api(fm_query(
+  lastfm_api(fm_query(
     method = "user.getTopAlbums",
     page = page,
     username = username
@@ -53,7 +53,7 @@ raw_user_get_top_albums <- function(username, period = "7day", page = 1) {
 #' @return A LastFM API object
 #' @export
 raw_user_get_top_artists <- function(username, period = "7day", page = 1) {
-  fm_api(fm_query(
+  lastfm_api(fm_query(
     method = "user.getTopArtists",
     username = username,
     page = page
@@ -71,7 +71,7 @@ raw_user_get_top_artists <- function(username, period = "7day", page = 1) {
 #' @return A LastFM API object
 #' @export
 raw_user_get_top_tracks <- function(username, period = "7day", page = 1) {
-  fm_api(fm_query(
+  lastfm_api(fm_query(
     method = "user.getTopTracks",
     username = username,
     page = page

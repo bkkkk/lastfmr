@@ -1,3 +1,4 @@
+#' @keywords internal
 handle_error <- function(resp) {
   if (!exists("error", resp)) {
     return(resp)

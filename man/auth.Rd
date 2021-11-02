@@ -4,19 +4,21 @@
 \alias{lastfm_auth}
 \alias{fetch_request_token}
 \alias{request_user_auth}
-\alias{fetch_web_session}
+\alias{fetch_auth_token}
 \title{Access Token Management}
 \usage{
-lastfm_auth(api_key = fm_api_key())
+lastfm_auth(api_key = default_api_key(), .skip_auth = FALSE)
 
-fetch_request_token(api_key = fm_api_key())
+fetch_request_token(api_key = default_api_key())
 
-request_user_auth(request_token, api_key = fm_api_key())
+request_user_auth(request_token, api_key = default_api_key())
 
-fetch_web_session(token, api_key = fm_api_key())
+fetch_auth_token(request_token, api_key = default_api_key())
 }
 \arguments{
-\item{api_key}{(optional) Application API Key}
+\item{api_key}{Application API key, if not provided the package default is used.}
+
+\item{.skip_auth}{Whether to skip the user authorization request, FALSE by default.}
 
 \item{request_token}{String containing the request token obtained with \code{\link[=fetch_request_token]{fetch_request_token()}}}
 }
@@ -24,20 +26,10 @@ fetch_web_session(token, api_key = fm_api_key())
 \itemize{
 \item \code{fetch_request_token()} and \code{fetch_web_session()} return strings
 }
-
-Request token
-
-
 }
 \description{
 lastfmr implements the desktop application authentication method specified
 in the \href{https://www.last.fm/api/desktopauth}{API documentation}.
-
-By default, you are directed to a web browser, asked to sign in to your last.fm
-account, and to grant lastfmr permissions to operate on your behalf.
-
-The 1st part of the user authentication process. This token expires after
-60 minutes.
 }
 \section{Authentication Workflow}{
 The authentication workflow is execute by a call to \code{\link[=lastfm_auth]{lastfm_auth()}} which invokes
@@ -57,7 +49,4 @@ can be attached to all user requests.
 }
 }
 
-\examples{
-
-}
-\concept{auth}
+\keyword{internal}
