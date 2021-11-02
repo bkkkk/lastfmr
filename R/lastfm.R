@@ -1,12 +1,3 @@
-fm_api_key <- function() {
-  key <- Sys.getenv("LASTFM_KEY")
-  if (identical(key, "")) {
-    stop("LastFM API key not found. Please set env var LASTFM_KEY", call. = FALSE)
-  }
-
-  key
-}
-
 #' Query a Last.FM endpoint.
 #'
 #' @param query A list of parameters that define the query. Use `fm_query`
@@ -31,9 +22,7 @@ fm_api <- function(query, .limit = NULL) {
 }
 
 fm_make_request <- function(params) {
-  baseurl <- "http://ws.audioscrobbler.com/2.0/?"
-
-  url <- httr::modify_url(baseurl, query = add_headers(params))
+  url <- httr::modify_url(api_endpoint(), query = add_headers(params))
   httr::GET(url)
 }
 
