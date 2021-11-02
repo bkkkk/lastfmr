@@ -59,7 +59,5 @@ is_not_signature_valid <- function(x) {
 
 #' @rdname auth_signature
 hash_signature <- function(raw_signature) {
-  hashed_sig <- digest::digest(raw_signature, algo = "md5", serialize = FALSE)
-  logger::log_info(hashed_sig)
-  hashed_sig
+  digest::digest(raw_signature, algo = "md5", serialize = FALSE)
 }
