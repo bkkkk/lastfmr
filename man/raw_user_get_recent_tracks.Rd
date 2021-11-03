@@ -9,7 +9,9 @@ raw_user_get_recent_tracks(
   from = NULL,
   to = NULL,
   extended = 0,
-  page = 1
+  .page = 1,
+  .n_pages = NULL,
+  .limit = 50
 )
 }
 \arguments{
@@ -24,10 +26,16 @@ this time.}
 \item{extended}{(optional) Whether to include extended data in each artist, and whether
 or not the user has loved each track.}
 
+\item{.page}{First page to retrieve}
+
+\item{.n_pages}{Number of pages of results to request, by default request everything}
+
+\item{.limit}{Number of records to return in a single response}
+
 \item{page}{(optional) The page number to fetch. Defaults to first page.}
 }
 \value{
-A LastFM API object
+A vector of LastFM API objects
 }
 \description{
 Get a list of the recent tracks listened to by this user.

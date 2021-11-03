@@ -38,7 +38,7 @@ A short description of the methodology is included here for completeness:
 The signature is then added as extra parameter named \code{api_sig}.
 
 These functions are not designed to be invoked directly. Requests are signed
-by default when using \code{\link[=lastfm_api]{lastfm_api()}} and all other dependent raw and tidy
+by default when using \code{\link[=lastfmr]{lastfmr()}} and all other dependent raw and tidy
 endpoint functions.
 \itemize{
 \item \code{\link[=add_signature]{add_signature()}} takes a list with request parameters and an auth_client

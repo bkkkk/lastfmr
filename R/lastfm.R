@@ -1,46 +1,31 @@
 #' Query a Last.FM endpoint.
 #'
-#' @param query A list of parameters that define the query. Use `fm_query`
-#'   to create an appropriate object.
+#' @param method string stating the endpoint to call
+#' @param ... named parameters to be passed to the endpoint
+#' @param .limit limit the number of items returned by the API, maximum 50
+#' @param .page optional parameter which page to start scanning from
 #'
 #' @return A LastFM API object.
 #' 
 #' @export
-fm_api <- function(query, .limit = NULL) {
-  params <- prepare_query(query)
-  raw <- fm_make_request(params)
-  resp <- fm_parse_response(raw, params)
+lastfmr <- function(method, ..., .limit = 50, .page = 1) {
+  params <- prepare_query(method = method, page = .page, limit = .limit, ...)
   
-  while (has_next_page(resp)) {
-    resp2 <- get_next_page(resp)
-    resp$result <- bind_rows(resp$result, resp2$result)
-    resp$attrs <- resp2$attrs
-    resp$request <- resp2$request
-  }
-  
-  resp
+  request(api_endpoint()) %>%
+    req_url_query(!!!params) %>%
+    req_perform() %>%
+    parse_lastfm_response()
 }
 
-fm_make_request <- function(params) {
-  url <- modify_url(api_endpoint(), query = add_headers(params))
-  GET(url)
-}
-
-fm_parse_response <- function(resp, params) {
-  if (resp$status_code != 200) {
-    stop("Problem with calling the API - response: ", content(resp))
-  }
-
-  json_response <- jsonlite::fromJSON(content(resp, as = "text", encoding = "utf-8"))
-  
+parse_lastfm_response <- function(resp, params) {
+  json_response <- resp_body_json(resp)
   structure(
     list(
       result = parse_result(json_response),
       attrs = parse_response_attribute(json_response),
-      response = resp,
-      request = list(query = params)
+      response = resp
     ),
-    class = "fm_api"
+    class = "lastfmr"
   )
 }
 

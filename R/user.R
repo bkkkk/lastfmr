@@ -8,20 +8,24 @@
 #'   this time.
 #' @param extended (optional) Whether to include extended data in each artist, and whether
 #'   or not the user has loved each track.
+#' @param .page First page to retrieve
+#' @param .n_pages Number of pages of results to request, by default request everything
+#' @param .limit Number of records to return in a single response
 #'
 #' @family raw
 #' 
-#' @return A LastFM API object
+#' @return A vector of LastFM API objects
 #' @export
-raw_user_get_recent_tracks <- function(username, from = NULL, to = NULL, extended = 0, page = 1) {
-  lastfm_api(fm_query(
+raw_user_get_recent_tracks <- function(username, from = NULL, to = NULL, extended = 0, .page = 1, .n_pages = NULL, .limit = 50) {
+  resp <- lastfmr(
     method = "user.getrecenttracks",
     username = username,
     from = from,
     to = to,
     extended = 0,
-    page = page
-  ))
+    .page = .page
+  )
+  # paginate(resp, n_pages = .n_pages)
 }
 
 #' Get the top albums listened to by a user. You can stipulate a time period. Sends the overall chart by default.
@@ -35,7 +39,7 @@ raw_user_get_recent_tracks <- function(username, from = NULL, to = NULL, extende
 #' @return A LastFM API object
 #' @export
 raw_user_get_top_albums <- function(username, period = "7day", page = 1) {
-  lastfm_api(fm_query(
+  lastfmr(fm_query(
     method = "user.getTopAlbums",
     page = page,
     username = username
@@ -53,7 +57,7 @@ raw_user_get_top_albums <- function(username, period = "7day", page = 1) {
 #' @return A LastFM API object
 #' @export
 raw_user_get_top_artists <- function(username, period = "7day", page = 1) {
-  lastfm_api(fm_query(
+  lastfmr(fm_query(
     method = "user.getTopArtists",
     username = username,
     page = page
@@ -71,7 +75,7 @@ raw_user_get_top_artists <- function(username, period = "7day", page = 1) {
 #' @return A LastFM API object
 #' @export
 raw_user_get_top_tracks <- function(username, period = "7day", page = 1) {
-  lastfm_api(fm_query(
+  lastfmr(fm_query(
     method = "user.getTopTracks",
     username = username,
     page = page

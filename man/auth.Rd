@@ -10,20 +10,16 @@
 \usage{
 auth_client_auth_request(req, auth_client, .sign = TRUE)
 
-lastfm_auth(api_key = default_api_key(), .skip_auth = FALSE, .auth = "default")
+lastfm_auth(auth_client = NULL, .skip_auth = FALSE, .auth = "default")
 
-fetch_request_token(auth_client = lastfm_auth_client())
+fetch_request_token(auth_client)
 
-request_user_auth(
-  request_token,
-  auth_client = lastfm_auth_client(),
-  .wait_for_user = TRUE
-)
+request_user_auth(request_token, auth_client)
 
-fetch_auth_token(request_token, auth_client = lastfm_auth_client())
+fetch_auth_token(request_token, auth_client)
 }
 \arguments{
-\item{api_key}{Application API key, if not provided the package default is used.}
+\item{auth_client}{An lastfm_auth_client object built with \code{\link[=lastfm_auth_client]{lastfm_auth_client()}} function}
 
 \item{.skip_auth}{Whether to skip the user authorization request, FALSE by default.}
 

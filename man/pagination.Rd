@@ -17,13 +17,13 @@ has_next_page(resp)
 get_next_page(resp)
 }
 \arguments{
-\item{resp}{lastfm_api response object}
+\item{resp}{lastfmr response object}
 }
 \value{
 \itemize{
 \item \code{\link[=get_current_page]{get_current_page()}} and \code{\link[=get_total_pages]{get_total_pages()}} return integers
 \item \code{\link[=has_next_page]{has_next_page()}} returns a boolean
-\item \code{\link[=get_next_page]{get_next_page()}} returns a \code{lastfm_api} object
+\item \code{\link[=get_next_page]{get_next_page()}} returns a \code{lastfmr} object
 }
 }
 \description{

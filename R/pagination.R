@@ -12,15 +12,45 @@
 #' * [has_next_page()] checks if there are more pages after the current page.
 #' * [get_next_page()] returns the next page after the a response.
 #' 
-#' @param resp lastfm_api response object
+#' @param resp lastfmr response object
 #' 
 #' @returns 
 #' * [get_current_page()] and [get_total_pages()] return integers
 #' * [has_next_page()] returns a boolean
-#' * [get_next_page()] returns a `lastfm_api` object
+#' * [get_next_page()] returns a `lastfmr` object
 #' 
 #' @name pagination
 NULL
+
+#' Get a concatenated result from multipage endpoints
+#'
+#' The pagination approach taken here involves constructing successive requests
+#' from an initial response. This initial response represents the first page
+#' in our multipage request.
+#'
+#' @param resp response object of type `lastfmr`
+#' @param n_pages number of pages to pull
+#'
+#' @return
+#' @export
+#'
+#' @examples
+paginate <- function(resp, n_pages = NULL) {
+  stopifnot(inherits(resp, "lastfmr"))
+  if (get_current_page(resp) > n_pages) {
+    rlang::abort("Total number of pages requested is less than page or response provided.")
+  }
+  expected_length <- max(n_pages, get_total_pages(resp)) - get_current_page(resp)
+  out <- vector("list", length = expected_length)
+  i <- 1L
+  out[[i]] <- resp # Should include the first response as well
+
+  while (has_next_page(resp) & get_current_page(resp) <= n_pages) {
+    out[[i]] <- get_next_page(resp)
+  }
+  
+  out
+}
 
 
 #' @rdname pagination
@@ -54,7 +84,7 @@ get_next_page <- function(resp) {
   query$page <- next_page
 
   logger::log_info("Reading the next page of results: ", next_page , "/", total_pages)
-  lastfm_api(query = query)
+  lastfmr(query = query)
 }
 
 get_response_attr <- function(resp) {

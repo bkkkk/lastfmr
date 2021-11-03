@@ -8,7 +8,7 @@
 #' 
 #' @export
 raw_track_search <- function(track, artist = NULL, page = 1) {
-  lastfm_api(fm_query(
+  lastfmr(fm_query(
     method = "track.search",
     track = track,
     artist = artist,

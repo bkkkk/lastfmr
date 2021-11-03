@@ -1,11 +1,4 @@
-fm_query <- function(method, page = 1, ...) {
-  list(method = method, page = page, ...)
-}
-
-prepare_query <- function(q) {
-  purrr::compact(purrr::modify_if(q, lubridate::is.POSIXct, as.numeric))
-}
-
-add_headers <- function(q, limit = 50) {
-  append(q, list(limit = limit, format = "json", api_key = default_api_key()))
+prepare_query <- function(method, page, limit = 50, ...) {
+  dots <- list(method = method, page = page, limit = limit, format = "json", ...)
+  purrr::compact(purrr::modify_if(dots, lubridate::is.POSIXct, as.numeric))
 }
