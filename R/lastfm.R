@@ -1,7 +1,7 @@
 #' Query a Last.FM endpoint.
 #'
 #' @param query A list of parameters that define the query. Use `fm_query`
-#'   to create an appopriate object.
+#'   to create an appropriate object.
 #'
 #' @return A LastFM API object.
 #' 

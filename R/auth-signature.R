@@ -18,13 +18,13 @@
 #' by default when using [lastfm_api()] and all other dependent raw and tidy
 #' endpoint functions.
 #' 
-#' *    [sign_request()] takes a list with request parameters and signs it by adding
-#'      the `api_sig` element.
+#' *    [add_signature()] takes a list with request parameters and an auth_client
+#'      signs it by adding the `api_sig` element.
 #' *    [create_signature()] performs steps 1, 2, and 3
 #' *    [hash_signature()] performs step 4
 #' 
 #' @returns 
-#' *    [sign_request()] returns a list
+#' *    [add_signature()] returns a list
 #' *    [create_signature()] and [hash_signature()] return strings
 #' 
 #' @param params Named list of query parameters
@@ -35,14 +35,14 @@
 NULL
 
 #' @rdname auth_signature
-sign_request <- function(params, client_secret = default_shared_secret()) {
-  raw_signature <- create_signature(params, client_secret)
+add_signature <- function(params, auth_client) {
+  raw_signature <- create_signature(params, auth_client)
   params[["api_sig"]] <- hash_signature(raw_signature)
   params
 }
 
 #' @rdname auth_signature
-create_signature <- function(params, client_secret = default_shared_secret()) {
+create_signature <- function(params, auth_client) {
   params[["format"]] <- NULL
   ordered_params <- params[order(names(params))]
   signature_fragment <- paste(
@@ -50,7 +50,7 @@ create_signature <- function(params, client_secret = default_shared_secret()) {
     stringi::stri_enc_toutf8(ordered_params),
     sep = "", collapse = ""
   )
-  paste0(signature_fragment, client_secret)
+  paste0(signature_fragment, auth_client_secret(auth_client))
 }
 
 is_not_signature_valid <- function(x) {

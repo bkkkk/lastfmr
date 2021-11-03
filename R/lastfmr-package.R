@@ -12,6 +12,7 @@
 #' @importFrom httr2 req_url_query
 #' @importFrom httr2 request
 #' @importFrom httr2 resp_body_json
+#' @importFrom purrr compact
 #' @importFrom usethis ui_info
 #' @importFrom usethis ui_yeah
 ## usethis namespace: end

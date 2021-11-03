@@ -2,14 +2,14 @@
 % Please edit documentation in R/auth-signature.R
 \name{auth_signature}
 \alias{auth_signature}
-\alias{sign_request}
+\alias{add_signature}
 \alias{create_signature}
 \alias{hash_signature}
 \title{Request Signing}
 \usage{
-sign_request(params, client_secret = default_shared_secret())
+add_signature(params, auth_client)
 
-create_signature(params, client_secret = default_shared_secret())
+create_signature(params, auth_client)
 
 hash_signature(raw_signature)
 }
@@ -18,7 +18,7 @@ hash_signature(raw_signature)
 }
 \value{
 \itemize{
-\item \code{\link[=sign_request]{sign_request()}} returns a list
+\item \code{\link[=add_signature]{add_signature()}} returns a list
 \item \code{\link[=create_signature]{create_signature()}} and \code{\link[=hash_signature]{hash_signature()}} return strings
 }
 }
@@ -41,8 +41,8 @@ These functions are not designed to be invoked directly. Requests are signed
 by default when using \code{\link[=lastfm_api]{lastfm_api()}} and all other dependent raw and tidy
 endpoint functions.
 \itemize{
-\item \code{\link[=sign_request]{sign_request()}} takes a list with request parameters and signs it by adding
-the \code{api_sig} element.
+\item \code{\link[=add_signature]{add_signature()}} takes a list with request parameters and an auth_client
+signs it by adding the \code{api_sig} element.
 \item \code{\link[=create_signature]{create_signature()}} performs steps 1, 2, and 3
 \item \code{\link[=hash_signature]{hash_signature()}} performs step 4
 }

@@ -21,7 +21,7 @@
 #'      the request token. The endpoint returns an encrypted session token that
 #'      can be attached to all user requests.
 #'
-#' @param api_key Application API key, if not provided the package default is used.
+#' @param auth_client An lastfm_auth_client object built with [lastfm_auth_client()] function
 #' @param request_token String containing the request token obtained with [fetch_request_token()]
 #'
 #' @returns
@@ -36,12 +36,16 @@ NULL
 #'
 #' @export
 #' @rdname auth
-lastfm_auth <- function(api_key = default_api_key(), .skip_auth = FALSE, .auth = "default") {
-  request_token <- fetch_request_token(api_key)
-  if (!.skip_auth) {
-    request_user_auth(request_token, api_key, .wait_for_user)
+lastfm_auth <- function(auth_client = NULL, .skip_auth = FALSE, .auth = "default") {
+  if (is.null(auth_client)) {
+    auth_client = lastfm_auth_client()
   }
-  session_key <- fetch_auth_token(request_token, api_key)
+
+  request_token <- fetch_request_token(auth_client)
+  if (!.skip_auth) {
+    request_user_auth(request_token, auth_client)
+  }
+  session_key <- fetch_auth_token(request_token, auth_client)
 
   auth_save(session_key, .auth)
 
@@ -50,9 +54,13 @@ lastfm_auth <- function(api_key = default_api_key(), .skip_auth = FALSE, .auth =
 
 #' @rdname auth
 #' @keywords internal
-fetch_request_token <- function(auth_client = lastfm_auth_client()) {
+fetch_request_token <- function(auth_client) {
+  query <- list(
+    method = "auth.getToken", format = "json"
+  )
   resp <- request(api_endpoint()) %>%
-    req_url_query(method = "auth.getToken", api_key = api_key, format = "json") %>%
+    req_url_query(!!!query) %>%
+    auth_client_auth_request(auth_client) %>%
     req_perform()
 
   token <- resp_body_json(resp)
@@ -61,13 +69,16 @@ fetch_request_token <- function(auth_client = lastfm_auth_client()) {
 
 #' @rdname auth
 #' @keywords internal
-request_user_auth <- function(request_token, auth_client = lastfm_auth_client(), .wait_for_user = TRUE) {
+request_user_auth <- function(request_token, auth_client) {
   params <- list(
-    api_key = auth_client$api_key,
+    api_key = auth_client_api_key(auth_client),
     token = request_token,
     format = "json"
   )
-  url <- modify_url(auth_client$auth_url, query = params)
+  # Using httr here instead of httr2 since there is no
+  # BROWSE in httr2 and no way afaik to get back
+  # a full URL from an httr2 request object
+  url <- modify_url(auth_url(), query = params)
 
   ui_info("Opening your browser to request authorization.")
 
@@ -78,16 +89,16 @@ request_user_auth <- function(request_token, auth_client = lastfm_auth_client(),
 
 #' @rdname auth
 #' @keywords internal
-fetch_auth_token <- function(request_token, api_key = default_api_key()) {
-  query <- sign_request(list(
-    api_key = api_key,
+fetch_auth_token <- function(request_token, auth_client) {
+  query <- list(
     method = "auth.getSession",
     token = request_token,
     format = "json"
-  ))
+  )
 
   resp_content <- request(api_endpoint()) %>%
     req_url_query(!!!query) %>%
+    auth_client_auth_request(auth_client) %>%
     req_perform() %>%
     resp_body_json()
 

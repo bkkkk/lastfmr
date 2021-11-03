@@ -59,6 +59,6 @@ print.obfuscated <- function(x) {
 }
 
 #' @export
-str.obfuscated <- function(x) {
+str.obfuscated <- function(x, ...) {
   cat("<OBFUSCATED>", sep = "\n")
 }
