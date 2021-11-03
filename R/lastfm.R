@@ -22,16 +22,16 @@ fm_api <- function(query, .limit = NULL) {
 }
 
 fm_make_request <- function(params) {
-  url <- httr::modify_url(api_endpoint(), query = add_headers(params))
-  httr::GET(url)
+  url <- modify_url(api_endpoint(), query = add_headers(params))
+  GET(url)
 }
 
 fm_parse_response <- function(resp, params) {
   if (resp$status_code != 200) {
-    stop("Problem with calling the API - response: ", httr::content(resp))
+    stop("Problem with calling the API - response: ", content(resp))
   }
 
-  json_response <- jsonlite::fromJSON(httr::content(resp, as = "text", encoding = "utf-8"))
+  json_response <- jsonlite::fromJSON(content(resp, as = "text", encoding = "utf-8"))
   
   structure(
     list(

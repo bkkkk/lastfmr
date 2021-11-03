@@ -7,11 +7,15 @@
 \alias{fetch_auth_token}
 \title{Access Token Management}
 \usage{
-lastfm_auth(api_key = default_api_key(), .skip_auth = FALSE)
+lastfm_auth(api_key = default_api_key(), .skip_auth = FALSE, .auth = "default")
 
 fetch_request_token(api_key = default_api_key())
 
-request_user_auth(request_token, api_key = default_api_key())
+request_user_auth(
+  request_token,
+  api_key = default_api_key(),
+  .wait_for_user = TRUE
+)
 
 fetch_auth_token(request_token, api_key = default_api_key())
 }
@@ -19,6 +23,8 @@ fetch_auth_token(request_token, api_key = default_api_key())
 \item{api_key}{Application API key, if not provided the package default is used.}
 
 \item{.skip_auth}{Whether to skip the user authorization request, FALSE by default.}
+
+\item{.auth}{Name of authentication identity as a string, defaults to \code{default}}
 
 \item{request_token}{String containing the request token obtained with \code{\link[=fetch_request_token]{fetch_request_token()}}}
 }

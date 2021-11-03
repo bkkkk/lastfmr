@@ -23,7 +23,6 @@
 #' 
 #' @param api_key Application API key, if not provided the package default is used.
 #' @param request_token String containing the request token obtained with [fetch_request_token()]
-#' @param .skip_auth Whether to skip the user authorization request, FALSE by default.
 #' 
 #' @returns
 #' * `fetch_request_token()` and `fetch_web_session()` return strings
@@ -32,25 +31,31 @@
 #' @aliases NULL
 NULL
 
+#' @param .skip_auth Whether to skip the user authorization request, FALSE by default.
+#' @param .auth Name of authentication identity as a string, defaults to `default`
+#' 
 #' @export
 #' @rdname auth
-lastfm_auth <- function(api_key = default_api_key(), .skip_auth = FALSE, .wait_for_user = TRUE) {
+lastfm_auth <- function(api_key = default_api_key(), .skip_auth = FALSE, .auth = "default") {
   request_token <- fetch_request_token(api_key)
   if (!.skip_auth) {
     request_user_auth(request_token, api_key, .wait_for_user)  
   }
   session_key <- fetch_auth_token(request_token, api_key)
-  session_key
+
+  auth_save(session_key, .auth)
+  
+  auth_as(.auth)
 }
 
 #' @rdname auth
 #' @keywords internal
 fetch_request_token <- function(api_key = default_api_key()) {
-  params <- list(method = "auth.getToken", api_key = api_key, format = "json")
+  resp <- request(api_endpoint()) %>%
+    req_url_query(method = "auth.getToken", api_key = api_key, format = "json") %>%
+    req_perform()
 
-  url <- httr::modify_url(api_endpoint(), query = params)
-  resp <- httr::GET(url)
-  token <- httr::content(resp)
+  token <- resp_body_json(resp)
   token$token
 }
 
@@ -63,11 +68,14 @@ request_user_auth <- function(request_token, api_key = default_api_key(), .wait_
     format = "json"
   )
 
-  url <- httr::modify_url(auth_url(), query = params)
+  url <- request(auth_url()) %>%
+    httr2::
+    req_url_query(query = params) %>%
+    req_perform()
 
-  usethis::ui_yeah("Is it ok if we take you to last.fm to authorize lastfmr. Once complete return here.", n_yes = 1, n_no = 1)
+  cli::cli_inform("Opening your browser to request authorization.")
 
-  httr::BROWSE(url)
+  BROWSE(url)
 
   usethis::ui_yeah("Have you authorized lastfmr Access??", n_yes = 1, n_no = 1)
 }
@@ -83,8 +91,8 @@ fetch_auth_token <- function(request_token, api_key = default_api_key()) {
   ))
     
   url <- modify_url(api_endpoint(), query = query)
-  resp_content <- content(httr::GET(url))
+  resp_content <- content(GET(url))
   resp <- handle_error(resp_content)
   cli::cli_alert_success("The authentication process is complete!")
-  resp
+  SessionKey(resp)
 }

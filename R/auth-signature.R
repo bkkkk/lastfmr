@@ -43,14 +43,14 @@ sign_request <- function(params, client_secret = default_shared_secret()) {
 
 #' @rdname auth_signature
 create_signature <- function(params, client_secret = default_shared_secret()) {
-  purrr::discard(params, is_not_signature_valid)
+  params[["format"]] <- NULL
   ordered_params <- params[order(names(params))]
   signature_fragment <- paste(
     names(ordered_params),
     stringi::stri_enc_toutf8(ordered_params),
     sep = "", collapse = ""
   )
-  paste(signature_fragment, client_secret)
+  paste0(signature_fragment, client_secret)
 }
 
 is_not_signature_valid <- function(x) {
