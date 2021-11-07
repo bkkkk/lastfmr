@@ -5,9 +5,6 @@
 \title{Last.FM querying endpoint}
 \arguments{
 \item{.page}{Page to query, by default query the first page}
-
-\item{.limit}{Number of response to return in a single request, 50 by
-default, the maximum allowed by the last.fm API.}
 }
 \description{
 Used for documenting single-query endpoints

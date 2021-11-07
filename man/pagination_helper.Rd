@@ -5,7 +5,6 @@
 \alias{get_current_page}
 \alias{get_total_pages}
 \alias{has_next_page}
-\alias{get_next_page}
 \title{Pagination Management}
 \usage{
 get_current_page(resp)
@@ -13,15 +12,13 @@ get_current_page(resp)
 get_total_pages(resp)
 
 has_next_page(resp)
-
-get_next_page(resp)
 }
 \arguments{
 \item{resp}{lastfmr response object}
 }
 \value{
 \itemize{
-\item \code{\link[=get_current_page]{get_current_page()}} and \code{\link[=get_total_pages]{get_total_pages()}} return integers
+\item \code{\link[=get_current_page]{get_current_page()}} returns an integer
 \item \code{\link[=has_next_page]{has_next_page()}} returns a boolean
 \item \code{\link[=get_next_page]{get_next_page()}} returns a \code{lastfmr} object
 }
@@ -36,6 +33,5 @@ or tidy data request functions.
 \item \code{\link[=get_current_page]{get_current_page()}} and \code{\link[=get_total_pages]{get_total_pages()}} return the current page of a
 response and the total number of pages available, respectively.
 \item \code{\link[=has_next_page]{has_next_page()}} checks if there are more pages after the current page.
-\item \code{\link[=get_next_page]{get_next_page()}} returns the next page after the a response.
 }
 }

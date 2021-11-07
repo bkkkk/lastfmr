@@ -8,15 +8,19 @@
 \alias{fetch_auth_token}
 \title{Access Token Management}
 \usage{
-auth_client_auth_request(req, auth_client, .sign = TRUE)
+auth_client_auth_request(req, auth_client = lastfm_auth_client(), .sign = TRUE)
 
-lastfm_auth(auth_client = NULL, .skip_auth = FALSE, .auth = "default")
+lastfm_auth(
+  auth_client = lastfm_auth_client(),
+  .skip_auth = FALSE,
+  .auth = "default"
+)
 
-fetch_request_token(auth_client)
+fetch_request_token(auth_client = lastfm_auth_client())
 
-request_user_auth(request_token, auth_client)
+request_user_auth(request_token, auth_client = lastfm_auth_client())
 
-fetch_auth_token(request_token, auth_client)
+fetch_auth_token(request_token, auth_client = lastfm_auth_client())
 }
 \arguments{
 \item{auth_client}{An lastfm_auth_client object built with \code{\link[=lastfm_auth_client]{lastfm_auth_client()}} function}

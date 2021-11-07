@@ -4,15 +4,15 @@
 \alias{paginated-endpoint}
 \title{Documenting a generic paginated endpoint}
 \arguments{
-\item{method}{The method to query}
+\item{method}{the method to query}
 
-\item{.start_page}{The page to start pulling from, by default starts from the
+\item{result_node}{a string with the name of record in the response}
+
+\item{.start_page}{the page to start pulling from, by default starts from the
 1st page}
 
-\item{.n_pages}{The total number of pages to pull. If no value is provided,
+\item{.n_pages}{the total number of pages to pull. If no value is provided,
 all pages are retrieved.}
-
-\item{.limit}{Total number of results to include in a single page. 50 by default.}
 }
 \description{
 Documenting a generic paginated endpoint

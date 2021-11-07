@@ -4,20 +4,20 @@
 \alias{paginate}
 \title{A generic paginated request}
 \usage{
-paginate(method, ..., .start_page = 1, .n_pages = NULL, .limit = 50)
+paginate(method, result_node, ..., .start_page = 1, .n_pages = NULL)
 }
 \arguments{
-\item{method}{The method to query}
+\item{method}{the method to query}
+
+\item{result_node}{a string with the name of record in the response}
 
 \item{...}{Endpoint parameters to pass to the API endpoint}
 
-\item{.start_page}{The page to start pulling from, by default starts from the
+\item{.start_page}{the page to start pulling from, by default starts from the
 1st page}
 
-\item{.n_pages}{The total number of pages to pull. If no value is provided,
+\item{.n_pages}{the total number of pages to pull. If no value is provided,
 all pages are retrieved.}
-
-\item{.limit}{Total number of results to include in a single page. 50 by default.}
 }
 \value{
 A list of lastfmr objects

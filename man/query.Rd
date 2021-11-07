@@ -5,7 +5,7 @@
 \alias{prepare_query}
 \title{Query management}
 \usage{
-prepare_query(method, ..., .page, .limit = 50)
+prepare_query(method, ..., .page)
 }
 \description{
 Query management

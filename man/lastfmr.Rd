@@ -4,17 +4,16 @@
 \alias{lastfmr}
 \title{Query a Last.FM endpoint.}
 \usage{
-lastfmr(method, ..., .limit = 50, .page = 1)
+lastfmr(method, ..., .page = 1, result_node = NULL)
 }
 \arguments{
-\item{method}{string stating the endpoint to call}
+\item{method}{a string}
 
 \item{...}{named parameters to be passed to the endpoint}
 
-\item{.limit}{Number of response to return in a single request, 50 by
-default, the maximum allowed by the last.fm API.}
-
 \item{.page}{Page to query, by default query the first page}
+
+\item{result_node}{a string}
 }
 \value{
 A LastFM API object.

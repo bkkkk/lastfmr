@@ -1,14 +1,9 @@
 #' @export
-lastfm_auth_client <- function(api_key = NULL, client_secret = NULL) {
-  if (is.null(api_key) || is.null(client_secret)) {
-    api_key = default_api_key()
-    client_secret = default_shared_secret()
-  }
-
+lastfm_auth_client <- function() {
   structure(
     list(
-      api_key = api_key,
-      client_secret = Obfuscated(client_secret)
+      api_key = default_api_key(),
+      client_secret = Obfuscated(default_shared_secret())
     ),
     class = "lastfm_auth_client"
   )

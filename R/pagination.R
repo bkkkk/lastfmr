@@ -1,11 +1,11 @@
 #' Documenting a generic paginated endpoint
 #' 
-#' @param method The method to query
-#' @param .start_page The page to start pulling from, by default starts from the
+#' @param method the method to query
+#' @param result_node a string with the name of record in the response
+#' @param .start_page the page to start pulling from, by default starts from the
 #'   1st page
-#' @param .n_pages The total number of pages to pull. If no value is provided,
+#' @param .n_pages the total number of pages to pull. If no value is provided,
 #'   all pages are retrieved.
-#' @param .limit Total number of results to include in a single page. 50 by default.
 #'
 #' @name paginated-endpoint
 NULL
@@ -21,17 +21,20 @@ NULL
 #' 
 #' @return A list of lastfmr objects
 #' @export
-paginate <- function(method, ..., .start_page = 1, .n_pages = NULL, .limit = 50) {
+paginate <- function(method, result_node, ..., .start_page = 1, .n_pages = NULL) {
   out <- vector("list", length = ifelse(is.null(.n_pages), 10, .n_pages))
   i <- 1L
-
+  
+  .n_pages <- ifelse(is.null(.n_pages), 5000, .n_pages)
+  
+  pb <- progress::progress_bar$new(format = "Downloading multiple pages :bar", total = .n_pages)
+  withr::defer(pb$terminate())
+  
   repeat ({
-    resp <- lastfmr(method, ...,  .page = .start_page + i - 1, .limit = .limit)
+    resp <- lastfmr(method, ..., result_node = result_node, .page = .start_page + i - 1)
   
     out[[i]] <- resp
-    
-    cli::cli_progress_along(1, name = "paginate", total = get_total_pages(resp))
-    
+
     if (!is.null(.n_pages) && get_current_page(resp) + 1 >= .start_page + .n_pages) {
       break
     }
@@ -40,6 +43,8 @@ paginate <- function(method, ..., .start_page = 1, .n_pages = NULL, .limit = 50)
       break
     }
     i <- i + 1
+
+    pb$update(i / get_total_pages(resp))
   })
   
   out
@@ -57,12 +62,11 @@ paginate <- function(method, ..., .start_page = 1, .n_pages = NULL, .limit = 50)
 #' * [get_current_page()] and [get_total_pages()] return the current page of a
 #' response and the total number of pages available, respectively.
 #' * [has_next_page()] checks if there are more pages after the current page.
-#' * [get_next_page()] returns the next page after the a response.
 #' 
 #' @param resp lastfmr response object
 #' 
 #' @returns 
-#' * [get_current_page()] and [get_total_pages()] return integers
+#' * [get_current_page()] returns an integer
 #' * [has_next_page()] returns a boolean
 #' * [get_next_page()] returns a `lastfmr` object
 #' 
@@ -87,22 +91,6 @@ has_next_page <- function(resp) {
   current_page + 1 <= last_page
 }
 
-#' @rdname pagination_helper
-get_next_page <- function(resp) {
-  if (!has_next_page(resp)) {
-    return(NULL)
-  }
-  current_page <- get_current_page(resp)
-  total_pages <- get_total_pages(resp)
-  next_page <- current_page + 1
-
-  query <- resp$request$query
-  query$page <- next_page
-
-  logger::log_info("Reading the next page of results: ", next_page , "/", total_pages)
-  lastfmr(query = query)
-}
-
 get_response_attr <- function(resp) {
-  resp[["attrs"]]
+  resp$data[["@attr"]]
 }

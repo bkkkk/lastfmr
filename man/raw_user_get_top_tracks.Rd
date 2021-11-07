@@ -9,8 +9,7 @@ raw_user_get_top_tracks(
   username,
   period = "7day",
   .start_page = 1,
-  .n_pages = NULL,
-  .limit = 50
+  .n_pages = NULL
 )
 }
 \arguments{
@@ -19,13 +18,11 @@ raw_user_get_top_tracks(
 \item{period}{overall | 7day | 1month | 3month | 6month | 12month - The time
 period over which to retrieve top tracks for.}
 
-\item{.start_page}{The page to start pulling from, by default starts from the
+\item{.start_page}{the page to start pulling from, by default starts from the
 1st page}
 
-\item{.n_pages}{The total number of pages to pull. If no value is provided,
+\item{.n_pages}{the total number of pages to pull. If no value is provided,
 all pages are retrieved.}
-
-\item{.limit}{Total number of results to include in a single page. 50 by default.}
 }
 \value{
 A LastFM API object
@@ -35,9 +32,9 @@ Get the top tracks listened to by a user. You can stipulate a time period.
 Sends the overall chart by default.
 }
 \seealso{
-Other raw functions: 
+Other raw user functions: 
 \code{\link{raw_user_get_recent_tracks}()},
 \code{\link{raw_user_get_top_albums}()},
 \code{\link{raw_user_get_top_artists}()}
 }
-\concept{raw functions}
+\concept{raw user functions}

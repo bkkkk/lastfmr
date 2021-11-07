@@ -4,13 +4,7 @@
 \alias{raw_track_search}
 \title{Search for a track by track name. Returns track matches sorted by relevance.}
 \usage{
-raw_track_search(
-  track,
-  artist = NULL,
-  .start_page = 1,
-  .n_pages = NULL,
-  .limit = 50
-)
+raw_track_search(track, artist = NULL, .start_page = 1, .n_pages = NULL)
 }
 \arguments{
 \item{track}{The track name.}
@@ -18,13 +12,11 @@ raw_track_search(
 \item{artist}{Narrow your search by specifying an artist, if not provided the
 endpoint searches across artists}
 
-\item{.start_page}{The page to start pulling from, by default starts from the
+\item{.start_page}{the page to start pulling from, by default starts from the
 1st page}
 
-\item{.n_pages}{The total number of pages to pull. If no value is provided,
+\item{.n_pages}{the total number of pages to pull. If no value is provided,
 all pages are retrieved.}
-
-\item{.limit}{Total number of results to include in a single page. 50 by default.}
 }
 \value{
 A list of lastfmr API objects
