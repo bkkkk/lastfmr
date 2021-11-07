@@ -1,3 +1,48 @@
+#' Documenting a generic paginated endpoint
+#' 
+#' @param method The method to query
+#' @param .start_page The page to start pulling from, by default starts from the
+#'   1st page
+#' @param .n_pages The total number of pages to pull. If no value is provided,
+#'   all pages are retrieved.
+#' @param .limit Total number of results to include in a single page. 50 by default.
+#'
+#' @name paginated-endpoint
+NULL
+ 
+#' A generic paginated request
+#' 
+#' The pagination approach taken here involves constructing successive requests
+#' from an initial response. This initial response represents the first page in
+#' our multipage request.
+#' 
+#' @param ... Endpoint parameters to pass to the API endpoint
+#' @inheritParams paginated-endpoint
+#' 
+#' @return A list of lastfmr objects
+#' @export
+paginate <- function(method, ..., .start_page = 1, .n_pages = NULL, .limit = 50) {
+  out <- vector("list", length = ifelse(is.null(.n_pages), 10, .n_pages))
+  i <- 1L
+  max_expected_page <- .start_page + .n_pages
+
+  repeat ({
+    resp <- lastfmr(method, ...,  .page = .start_page + i - 1, .limit = .limit)
+
+    out[[i]] <- resp
+    if (get_current_page(resp) + 1 >= max_expected_page) {
+      break
+    }
+    
+    if (!has_next_page(resp)) {
+      break
+    }
+    i <- i + 1
+  })
+  
+  out
+}
+
 #' Pagination Management
 #' 
 #' @description 
@@ -19,51 +64,20 @@
 #' * [has_next_page()] returns a boolean
 #' * [get_next_page()] returns a `lastfmr` object
 #' 
-#' @name pagination
+#' @name pagination_helper
 NULL
 
-#' Get a concatenated result from multipage endpoints
-#'
-#' The pagination approach taken here involves constructing successive requests
-#' from an initial response. This initial response represents the first page
-#' in our multipage request.
-#'
-#' @param resp response object of type `lastfmr`
-#' @param n_pages number of pages to pull
-#'
-#' @return
-#' @export
-#'
-#' @examples
-paginate <- function(resp, n_pages = NULL) {
-  stopifnot(inherits(resp, "lastfmr"))
-  if (get_current_page(resp) > n_pages) {
-    rlang::abort("Total number of pages requested is less than page or response provided.")
-  }
-  expected_length <- max(n_pages, get_total_pages(resp)) - get_current_page(resp)
-  out <- vector("list", length = expected_length)
-  i <- 1L
-  out[[i]] <- resp # Should include the first response as well
-
-  while (has_next_page(resp) & get_current_page(resp) <= n_pages) {
-    out[[i]] <- get_next_page(resp)
-  }
-  
-  out
-}
-
-
-#' @rdname pagination
+#' @rdname pagination_helper
 get_current_page <- function(resp) {
   as.integer(get_response_attr(resp)$page)
 }
 
-#' @rdname pagination
+#' @rdname pagination_helper
 get_total_pages <- function(resp) {
   as.integer(get_response_attr(resp)$totalPages)
 }
 
-#' @rdname pagination
+#' @rdname pagination_helper
 has_next_page <- function(resp) {
   current_page <- get_current_page(resp)
   last_page <- get_total_pages(resp)
@@ -71,7 +85,7 @@ has_next_page <- function(resp) {
   current_page + 1 <= last_page
 }
 
-#' @rdname pagination
+#' @rdname pagination_helper
 get_next_page <- function(resp) {
   if (!has_next_page(resp)) {
     return(NULL)

@@ -4,14 +4,26 @@
 \alias{raw_user_get_top_albums}
 \title{Get the top albums listened to by a user. You can stipulate a time period. Sends the overall chart by default.}
 \usage{
-raw_user_get_top_albums(username, period = "7day", page = 1)
+raw_user_get_top_albums(
+  username,
+  period = "7day",
+  .start_page = 1,
+  .n_pages = NULL,
+  .limit = 50
+)
 }
 \arguments{
 \item{username}{The user name to fetch top albums for.}
 
 \item{period}{(optional) overall | 7day | 1month | 3month | 6month | 12month - The time period over which to retrieve top albums for.}
 
-\item{page}{The page number to fetch. Defaults to first page.}
+\item{.start_page}{The page to start pulling from, by default starts from the
+1st page}
+
+\item{.n_pages}{The total number of pages to pull. If no value is provided,
+all pages are retrieved.}
+
+\item{.limit}{Total number of results to include in a single page. 50 by default.}
 }
 \value{
 A LastFM API object
@@ -20,8 +32,9 @@ A LastFM API object
 Get the top albums listened to by a user. You can stipulate a time period. Sends the overall chart by default.
 }
 \seealso{
-Other raw: 
+Other raw functions: 
 \code{\link{raw_user_get_recent_tracks}()},
-\code{\link{raw_user_get_top_artists}()}
+\code{\link{raw_user_get_top_artists}()},
+\code{\link{raw_user_get_top_tracks}()}
 }
-\concept{raw}
+\concept{raw functions}

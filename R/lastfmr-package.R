@@ -8,6 +8,7 @@
 #' @importFrom httr GET
 #' @importFrom httr modify_url
 #' @importFrom httr2 obfuscated
+#' @importFrom httr2 req_error
 #' @importFrom httr2 req_perform
 #' @importFrom httr2 req_url_query
 #' @importFrom httr2 request

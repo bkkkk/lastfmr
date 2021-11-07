@@ -9,7 +9,7 @@ raw_user_get_recent_tracks(
   from = NULL,
   to = NULL,
   extended = 0,
-  .page = 1,
+  .start_page = 1,
   .n_pages = NULL,
   .limit = 50
 )
@@ -26,13 +26,13 @@ this time.}
 \item{extended}{(optional) Whether to include extended data in each artist, and whether
 or not the user has loved each track.}
 
-\item{.page}{First page to retrieve}
+\item{.start_page}{The page to start pulling from, by default starts from the
+1st page}
 
-\item{.n_pages}{Number of pages of results to request, by default request everything}
+\item{.n_pages}{The total number of pages to pull. If no value is provided,
+all pages are retrieved.}
 
-\item{.limit}{Number of records to return in a single response}
-
-\item{page}{(optional) The page number to fetch. Defaults to first page.}
+\item{.limit}{Total number of results to include in a single page. 50 by default.}
 }
 \value{
 A vector of LastFM API objects
@@ -41,8 +41,9 @@ A vector of LastFM API objects
 Get a list of the recent tracks listened to by this user.
 }
 \seealso{
-Other raw: 
+Other raw functions: 
 \code{\link{raw_user_get_top_albums}()},
-\code{\link{raw_user_get_top_artists}()}
+\code{\link{raw_user_get_top_artists}()},
+\code{\link{raw_user_get_top_tracks}()}
 }
-\concept{raw}
+\concept{raw functions}

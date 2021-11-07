@@ -11,9 +11,10 @@ lastfmr(method, ..., .limit = 50, .page = 1)
 
 \item{...}{named parameters to be passed to the endpoint}
 
-\item{.limit}{limit the number of items returned by the API, maximum 50}
+\item{.limit}{Number of response to return in a single request, 50 by
+default, the maximum allowed by the last.fm API.}
 
-\item{.page}{optional parameter which page to start scanning from}
+\item{.page}{Page to query, by default query the first page}
 }
 \value{
 A LastFM API object.
