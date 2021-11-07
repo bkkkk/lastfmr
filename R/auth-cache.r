@@ -58,11 +58,12 @@ auth_save <- function(auth, name) {
 #' @keywords internal
 auth_load <- function(name) {
   if (is.null(name)) {
+    cli::cli_inform("Loading default last.fm credentials.")
     name <- "default"
   }
   path <- auth_path(paste0(name, ".rds"))
   if (!file.exists(path)) {
-    cli::cli_abort("Couldn't find lastfm identity {name}. Did you run lastfm_auth('{name}')?")
+    lastfm_auth()
   }
 
   cli::cli_inform("Reading auth from '{path}'")

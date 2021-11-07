@@ -40,9 +40,8 @@ auth_client_secret <- function(auth_client) {
 }
 
 #' @rdname auth
-auth_client_auth_request <- function(req, auth_client, .sign = TRUE) {
-  url <- httr2::url_parse(req$url)
-  query <- url$query
+auth_client_auth_request <- function(req, auth_client = lastfm_auth_client(), .sign = TRUE) {
+  query <- req_query_as_list(req)
   query[["api_key"]] <- auth_client_api_key(auth_client)
   if (.sign) {
     query <- add_signature(query, auth_client)

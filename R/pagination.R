@@ -24,13 +24,15 @@ NULL
 paginate <- function(method, ..., .start_page = 1, .n_pages = NULL, .limit = 50) {
   out <- vector("list", length = ifelse(is.null(.n_pages), 10, .n_pages))
   i <- 1L
-  max_expected_page <- .start_page + .n_pages
 
   repeat ({
     resp <- lastfmr(method, ...,  .page = .start_page + i - 1, .limit = .limit)
-
+  
     out[[i]] <- resp
-    if (get_current_page(resp) + 1 >= max_expected_page) {
+    
+    cli::cli_progress_along(1, name = "paginate", total = get_total_pages(resp))
+    
+    if (!is.null(.n_pages) && get_current_page(resp) + 1 >= .start_page + .n_pages) {
       break
     }
     

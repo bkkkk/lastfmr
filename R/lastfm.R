@@ -23,6 +23,7 @@ lastfmr <- function(method, ..., .limit = 50, .page = 1) {
   
   request(api_endpoint()) %>%
     req_url_query(!!!params) %>%
+    auth_end_user_request() %>%
     req_error(body = handle_error) %>%
     req_perform() %>%
     parse_lastfm_response()

@@ -36,11 +36,7 @@ NULL
 #'
 #' @export
 #' @rdname auth
-lastfm_auth <- function(auth_client = NULL, .skip_auth = FALSE, .auth = "default") {
-  if (is.null(auth_client)) {
-    auth_client = lastfm_auth_client()
-  }
-
+lastfm_auth <- function(auth_client = lastfm_auth_client(), .skip_auth = FALSE, .auth = "default") {
   request_token <- fetch_request_token(auth_client)
   if (!.skip_auth) {
     request_user_auth(request_token, auth_client)
@@ -54,7 +50,7 @@ lastfm_auth <- function(auth_client = NULL, .skip_auth = FALSE, .auth = "default
 
 #' @rdname auth
 #' @keywords internal
-fetch_request_token <- function(auth_client) {
+fetch_request_token <- function(auth_client = lastfm_auth_client()) {
   query <- list(
     method = "auth.getToken", format = "json"
   )
@@ -69,7 +65,7 @@ fetch_request_token <- function(auth_client) {
 
 #' @rdname auth
 #' @keywords internal
-request_user_auth <- function(request_token, auth_client) {
+request_user_auth <- function(request_token, auth_client = lastfm_auth_client()) {
   params <- list(
     api_key = auth_client_api_key(auth_client),
     token = request_token,
@@ -89,7 +85,7 @@ request_user_auth <- function(request_token, auth_client) {
 
 #' @rdname auth
 #' @keywords internal
-fetch_auth_token <- function(request_token, auth_client) {
+fetch_auth_token <- function(request_token, auth_client = lastfm_auth_client()) {
   query <- list(
     method = "auth.getSession",
     token = request_token,
