@@ -20,8 +20,8 @@ raw_user_get_recent_tracks <- function(username, from = NULL, to = NULL, extende
     username = username,
     from = from,
     to = to,
-    extended = 0,
-    .start_page = 1,
+    extended = extended,
+    .start_page = .start_page,
     .n_pages = .n_pages
   )
 }
@@ -65,7 +65,7 @@ raw_user_get_top_albums <- function(username, period = "7day", .start_page = 1, 
     method = "user.getTopAlbums",
     result_node = "topalbums",
     username = username,
-    .start_page = 1,
+    .start_page = .start_page,
     .n_pages = .n_pages
   )
 }
@@ -110,7 +110,7 @@ raw_user_get_top_artists <- function(username, period = "7day", .start_page = 1,
   paginate(
     method = "user.getTopArtists",
     username = username,
-    .start_page = 1,
+    .start_page = .start_page,
     .n_pages = .n_pages
   )
 }
@@ -157,7 +157,7 @@ raw_user_get_top_tracks <- function(username, period = "7day", .start_page = 1, 
     method = "user.getTopTracks",
     username = username,
     period = period,
-    .start_page = 1,
+    .start_page = .start_page,
     .n_pages = .n_pages
   )
 }
