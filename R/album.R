@@ -39,21 +39,21 @@ raw_album_search <- function(album, .start_page = 1, .n_pages = NULL) {
 #' @param autocorrect (Optional) Whether to correct the artist name. Defaults to TRUE if not provided.
 #' @param username (Optional) Username as a string
 #' @param lang (Optional) The language to return the biography in.
-#' @inheritParams paginated-endpoint
 #'
 #' @return A vector of LastFM API objects
 #' @export
-raw_album_get_info <- function(artist = NULL, album = NULL, mbid = NULL, autocorrect = TRUE, username = NULL, lang = NULL, .start_page = 1, .n_pages = NULL) {
+raw_album_get_info <- function(artist = NULL, album = NULL, mbid = NULL, autocorrect = TRUE, username = NULL, lang = NULL) {
   params <- sanitize_raw_album_get_info_parameters(artist, album, mbid)
 
-  paginate(
+  lastfmr(
     method = "album.getInfo",
-    !!!params,
+    result_node = "album",
+    artist=params[["artist"]],
+    album=params[["album"]],
+    mbid=params[["mbid"]],
     autocorrect = autocorrect,
     lang = lang,
-    username = username,
-    .start_page = .start_page,
-    .n_pages = .n_pages
+    username = username
   )
 }
 
@@ -70,7 +70,8 @@ sanitize_raw_album_get_info_parameters <- function(artist = NULL, album = NULL, 
   }
   
   if(xor(!is.null(artist), !is.null(album))) {
-    stop(glue("`raw_album_get_info` is missing either artist or album name. Provided artist={artist}, album={album}"))
+    is_null_field <- ifelse(is.null(artist), "artist", "album")
+    stop(glue("`raw_album_get_info` is missing {is_null_field} name."))
   }
 
   list("artist"=artist, "album"=album, "mbid"=mbid)
