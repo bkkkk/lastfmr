@@ -84,6 +84,10 @@ NULL
 
 #' @rdname pagination_helper
 get_current_page <- function(resp) {
+  if (is.null(get_response_attr(resp)$page)) {
+    abort(glue("The response is missing the current page information: {resp$data}"))
+  }
+  
   as.integer(get_response_attr(resp)$page)
 }
 
