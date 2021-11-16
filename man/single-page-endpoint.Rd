@@ -4,6 +4,10 @@
 \alias{single-page-endpoint}
 \title{Last.FM querying endpoint}
 \arguments{
+\item{method}{a string}
+
+\item{result_node}{a string}
+
 \item{.page}{Page to query, by default query the first page}
 }
 \description{

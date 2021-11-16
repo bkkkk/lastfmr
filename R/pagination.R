@@ -1,7 +1,5 @@
 #' Documenting a generic paginated endpoint
 #' 
-#' @param method the method to query
-#' @param result_node a string with the name of record in the response
 #' @param .start_page the page to start pulling from, by default starts from the
 #'   1st page
 #' @param .n_pages the total number of pages to pull. If no value is provided,
@@ -17,8 +15,9 @@ NULL
 #' our multipage request.
 #' 
 #' @param ... Endpoint parameters to pass to the API endpoint
-#' @param is_opensearch Is the response paginated using OpenSearch
+#'
 #' @inheritParams paginated-endpoint
+#' @inheritParams single-page-endpoint
 #' 
 #' @return A list of lastfmr objects
 #' @export
@@ -58,11 +57,16 @@ paginate <- function(method, ..., result_node = NULL, .start_page = 1, .n_pages 
 #' Pagination Management
 #' 
 #' @description 
+#' 
 #' Many of last.fm API responses are paginated with a page size maximum of 50.
 #' lastfmr provides a series of functions that help to deal with these pages. 
+#' 
 #' End-users are not expected to interact with these functions directly in most
 #' cases since pagination is already taken into account when invoking the raw
 #' or tidy data request functions.
+#' 
+#' Note that some endpoints return pagination based on OpenSearch query results
+#' and information about next pages, etc. are stored in slightly different ways.
 #' 
 #' * [get_current_page()] and [get_total_pages()] return the current page of a
 #' response and the total number of pages available, respectively.

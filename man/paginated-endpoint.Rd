@@ -4,10 +4,6 @@
 \alias{paginated-endpoint}
 \title{Documenting a generic paginated endpoint}
 \arguments{
-\item{method}{the method to query}
-
-\item{result_node}{a string with the name of record in the response}
-
 \item{.start_page}{the page to start pulling from, by default starts from the
 1st page}
 

@@ -7,6 +7,8 @@
 raw_album_search(album, .start_page = 1, .n_pages = NULL)
 }
 \arguments{
+\item{album}{Album name as a string}
+
 \item{.start_page}{the page to start pulling from, by default starts from the
 1st page}
 
@@ -14,7 +16,7 @@ raw_album_search(album, .start_page = 1, .n_pages = NULL)
 all pages are retrieved.}
 }
 \value{
-
+A vector of LastFM API objects
 }
 \description{
 Search for album by name

@@ -26,9 +26,13 @@ has_next_page(resp)
 \description{
 Many of last.fm API responses are paginated with a page size maximum of 50.
 lastfmr provides a series of functions that help to deal with these pages.
+
 End-users are not expected to interact with these functions directly in most
 cases since pagination is already taken into account when invoking the raw
 or tidy data request functions.
+
+Note that some endpoints return pagination based on OpenSearch query results
+and information about next pages, etc. are stored in slightly different ways.
 \itemize{
 \item \code{\link[=get_current_page]{get_current_page()}} and \code{\link[=get_total_pages]{get_total_pages()}} return the current page of a
 response and the total number of pages available, respectively.

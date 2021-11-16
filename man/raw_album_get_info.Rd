@@ -10,9 +10,7 @@ raw_album_get_info(
   mbid = NULL,
   autocorrect = TRUE,
   username = NULL,
-  lang = NULL,
-  .start_page = 1,
-  .n_pages = NULL
+  lang = NULL
 )
 }
 \arguments{
@@ -27,15 +25,9 @@ raw_album_get_info(
 \item{username}{(Optional) Username as a string}
 
 \item{lang}{(Optional) The language to return the biography in.}
-
-\item{.start_page}{the page to start pulling from, by default starts from the
-1st page}
-
-\item{.n_pages}{the total number of pages to pull. If no value is provided,
-all pages are retrieved.}
 }
 \value{
-
+A vector of LastFM API objects
 }
 \description{
 The album can be retrieved by:

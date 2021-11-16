@@ -4,14 +4,14 @@
 \alias{paginate}
 \title{A generic paginated request}
 \usage{
-paginate(method, result_node, ..., .start_page = 1, .n_pages = NULL)
+paginate(method, ..., result_node = NULL, .start_page = 1, .n_pages = NULL)
 }
 \arguments{
-\item{method}{the method to query}
-
-\item{result_node}{a string with the name of record in the response}
+\item{method}{a string}
 
 \item{...}{Endpoint parameters to pass to the API endpoint}
+
+\item{result_node}{a string}
 
 \item{.start_page}{the page to start pulling from, by default starts from the
 1st page}

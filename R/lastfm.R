@@ -2,6 +2,8 @@
 #' 
 #' @description Used for documenting single-query endpoints
 #' 
+#' @param method a string
+#' @param result_node a string
 #' @param .page Page to query, by default query the first page
 #'   
 #' @name single-page-endpoint
@@ -9,9 +11,8 @@ NULL
 
 #' Query a Last.FM endpoint.
 #'
-#' @param method a string
 #' @param ... named parameters to be passed to the endpoint
-#' @param result_node a string
+#' 
 #' @inheritParams single-page-endpoint
 #'
 #' @return A LastFM API object.
