@@ -17,16 +17,21 @@ NULL
 #' our multipage request.
 #' 
 #' @param ... Endpoint parameters to pass to the API endpoint
+#' @param is_opensearch Is the response paginated using OpenSearch
 #' @inheritParams paginated-endpoint
 #' 
 #' @return A list of lastfmr objects
 #' @export
-paginate <- function(method, result_node, ..., .start_page = 1, .n_pages = NULL) {
+paginate <- function(method, ..., result_node = NULL, .start_page = 1, .n_pages = NULL) {
   out <- vector("list", length = ifelse(is.null(.n_pages), 10, .n_pages))
   i <- 1L
-  
+
+  log_info("Reading paginated endpoint {method}")
+
   .n_pages <- ifelse(is.null(.n_pages), 5000, .n_pages)
   
+  log_info("Using limit of {.n_pages} pages, starting from {.start_page}")
+
   pb <- progress::progress_bar$new(format = "Downloading multiple pages :bar", total = .n_pages)
   withr::defer(pb$terminate())
   
@@ -35,7 +40,7 @@ paginate <- function(method, result_node, ..., .start_page = 1, .n_pages = NULL)
   
     out[[i]] <- resp
 
-    if (!is.null(.n_pages) && get_current_page(resp) + 1 >= .start_page + .n_pages) {
+    if (get_current_page(resp) + 1 >= .start_page + .n_pages) {
       break
     }
     
@@ -92,5 +97,20 @@ has_next_page <- function(resp) {
 }
 
 get_response_attr <- function(resp) {
-  resp$data[["@attr"]]
+  response_data <- resp$data
+  if (!is.null(response_data[["opensearch:totalResults"]])) {
+    items_per_page = as.integer(response_data[["opensearch:itemsPerPage"]])
+    total_items = as.integer(response_data[["opensearch:totalResults"]])
+
+    return (list(
+      totalPages = total_pages(total_items, items_per_page),
+      page = as.integer(response_data[["opensearch:Query"]][["startPage"]])
+    ))
+  } else {
+    response_data[["@attr"]]
+  }
+}
+
+total_pages <- function(total_items, items_per_page) {
+  return (trunc(total_items / items_per_page) + (total_items %% items_per_page > 0))
 }

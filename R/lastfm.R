@@ -25,7 +25,7 @@ lastfmr <- function(method, ..., .page = 1, result_node = NULL) {
     auth_end_user_request() %>%
     req_error(body = handle_error) %>%
     req_perform() %>%
-    parse_lastfm_response(result_node)
+    parse_lastfm_response(result_node=result_node)
 }
 
 parse_lastfm_response <- function(resp, result_node = NULL) {
