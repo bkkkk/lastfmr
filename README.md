@@ -37,16 +37,14 @@ Below is a summary of endpoint support:
 | chart.getTopTags     | :heavy_check_mark: | :x:                |
 | chart.getTopTracks   | :heavy_check_mark: | :x:                |
 | track.search         | :heavy_check_mark: | :x:                |
+| track.getInfo        | :heavy_check_mark: | :x:                |
+| track.getSimilar     | :heavy_check_mark: | :x:                |
 | user.getRecentTracks | :heavy_check_mark: | :heavy_check_mark: |
 | user.getTopAlbums    | :heavy_check_mark: | :heavy_check_mark: |
 | user.getTopArtists   | :heavy_check_mark: | :heavy_check_mark: |
 | user.getTopTracks    | :heavy_check_mark: | :x:                |
-| user.getFriends      | :heavy_check_mark: | :x: |
-| user.getInfo         | :heavy_check_mark: | :x: |
-| user.getLovedTracks  | :heavy_check_mark: | :x: |
-| user.getPersonalTags | :heavy_check_mark: | :x: |
-| user.getTopTags      | :heavy_check_mark: | :x: |
-| track.getInfo | :x: | :x: |
-| track.getSimilar | :x: | :x: |
-
-
+| user.getFriends      | :heavy_check_mark: | :x:                |
+| user.getInfo         | :heavy_check_mark: | :x:                |
+| user.getLovedTracks  | :heavy_check_mark: | :x:                |
+| user.getPersonalTags | :heavy_check_mark: | :x:                |
+| user.getTopTags      | :heavy_check_mark: | :x:                |
