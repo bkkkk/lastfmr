@@ -29,11 +29,17 @@ The function names are mapped directly from the endpoint name
 
 Endpoints supported:
 
-* `track.search`
-* `user.getrecenttracks`
-* `user.getTopAlbums`
-* `user.getTopArtists`
-* `user.getTopTracks`
 
-
+| Endpoint             | Raw                | Tidy               | 
+|----------------------|--------------------|--------------------|
+| album.getInfo        | :heavy_check_mark: | :x:                |
+| album.search         | :heavy_check_mark: | :x:                |
+| chart.getTopArtists  | :heavy_check_mark: | :x:                |
+| chart.getTopTags     | :heavy_check_mark: | :x:                |
+| chart.getTopTracks   | :heavy_check_mark: | :x:                |
+| track.search         | :heavy_check_mark: | :x:                |
+| user.getRecentTracks | :heavy_check_mark: | :heavy_check_mark: |
+| user.getTopAlbums    | :heavy_check_mark: | :heavy_check_mark: |
+| user.getTopArtists   | :heavy_check_mark: | :heavy_check_mark: |
+| user.getTopTracks    | :heavy_check_mark: | :x:                |
 
