@@ -4,10 +4,12 @@
 \alias{raw_user_get_info}
 \title{Title}
 \usage{
-raw_user_get_info(username = NULL, .start_page = 1)
+raw_user_get_info(username = NULL, .page = 1)
 }
 \arguments{
 \item{username}{}
+
+\item{.page}{Page to query, by default query the first page}
 }
 \value{
 A lastfmr API object, see \code{\link[=lastfmr]{lastfmr()}} for information.

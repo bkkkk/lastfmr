@@ -32,7 +32,7 @@ or not the user has loved each track.}
 all pages are retrieved.}
 }
 \value{
-A dataframe
+A tibble
 }
 \description{
 Get a list of the recent tracks listened to by this user as tidy data

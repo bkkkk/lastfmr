@@ -23,7 +23,7 @@ user_get_top_artists(
 all pages are retrieved.}
 }
 \value{
-a dataframe
+A tibble
 }
 \description{
 You can stipulate a time period. Sends the overall chart by default.

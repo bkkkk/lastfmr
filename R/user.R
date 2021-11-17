@@ -29,10 +29,10 @@ raw_user_get_recent_tracks <- function(username, from = NULL, to = NULL, extende
 #' Get a list of the recent tracks listened to by this user as tidy data
 #'
 #' @inheritParams raw_user_get_recent_tracks
+#' @inherit tidy-function return
 #'
 #' @family tidy user functions
 #'
-#' @return A dataframe
 #' @export
 user_get_recent_tracks <- function(username, from = NULL, to = NULL, extended = 0, .start_page = 1, .n_pages = NULL) {
   raw_responses <- raw_user_get_recent_tracks(username, from, to, extended, .start_page, .n_pages)
@@ -75,10 +75,10 @@ raw_user_get_top_albums <- function(username, period = "7day", .start_page = 1, 
 #' You can stipulate a time period. Sends the overall chart by default.
 #'
 #' @inheritParams raw_user_get_top_albums
+#' @inherit tidy-function return
 #'
 #' @family tidy user functions
 #'
-#' @return a tibble
 #' @export
 user_get_top_albums <- function(username, period = "7day", .start_page = 1, .n_pages = NULL) {
   raw_results <- raw_user_get_top_albums(username, period, .start_page, .n_pages)
@@ -120,10 +120,10 @@ raw_user_get_top_artists <- function(username, period = "7day", .start_page = 1,
 #' You can stipulate a time period. Sends the overall chart by default.
 #'
 #' @inheritParams raw_user_get_top_artists
+#' @inherit tidy-function return
 #'
 #' @family tidy user functions
 #'
-#' @return a dataframe
 #' @export
 user_get_top_artists <- function(username, period = "7day", .start_page = 1, .n_pages = NULL) {
   raw_results <- raw_user_get_top_artists(username, period, .start_page, .n_pages)
@@ -213,11 +213,11 @@ raw_user_get_friends <- function(username, recent_tracks = TRUE, .start_page = 1
 #' @family raw user functions
 #'
 #' @export
-raw_user_get_info <- function(username = NULL, .start_page = 1) {
+raw_user_get_info <- function(username = NULL, .page = 1) {
   lastfmr(
     method = "user.getInfo",
     user = username,
-    .start_page = .start_page
+    .page = .page
   )
 }
 
@@ -277,11 +277,11 @@ raw_user_get_personal_tags <- function(username, tag, tagging_type, .start_page 
 #' @inherit single-page-endpoint return
 #' 
 #' @export
-raw_user_get_top_tags <- function(username, .start_page = 1) {
+raw_user_get_top_tags <- function(username, .page = 1) {
   lastfmr(
     method = "user.getTopTags",
     result_node = "toptags",
     user = username,
-    .start_page = .start_page
+    .page = .page
   )
 }

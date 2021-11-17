@@ -4,7 +4,7 @@
 \alias{raw_user_get_top_tags}
 \title{Get top tags used by a user}
 \usage{
-raw_user_get_top_tags(username, .start_page = 1)
+raw_user_get_top_tags(username, .page = 1)
 }
 \arguments{
 \item{username}{Username as a string}
