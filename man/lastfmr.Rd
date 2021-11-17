@@ -16,7 +16,7 @@ lastfmr(method, ..., .page = 1, result_node = NULL)
 \item{result_node}{a string}
 }
 \value{
-A LastFM API object.
+A lastfmr API object, see \code{\link[=lastfmr]{lastfmr()}} for information.
 }
 \description{
 Query a Last.FM endpoint.

@@ -31,9 +31,6 @@ or not the user has loved each track.}
 \item{.n_pages}{the total number of pages to pull. If no value is provided,
 all pages are retrieved.}
 }
-\value{
-A vector of LastFM API objects
-}
 \description{
 Get a list of the recent tracks listened to by this user.
 }

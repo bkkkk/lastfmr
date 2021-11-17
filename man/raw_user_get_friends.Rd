@@ -22,9 +22,6 @@ raw_user_get_friends(
 \item{.n_pages}{the total number of pages to pull. If no value is provided,
 all pages are retrieved.}
 }
-\value{
-
-}
 \description{
 Title
 }

@@ -1,5 +1,7 @@
 #' Get a list of the recent tracks listened to by this user.
 #'
+#' @inherit paginated-endpoint return params
+#' 
 #' @param username The last.fm username to fetch the recent tracks of.
 #' @param from (optional) Beginning timestamp of a range - only display
 #'   scrobbles after this time.
@@ -7,11 +9,9 @@
 #'   this time.
 #' @param extended (optional) Whether to include extended data in each artist, and whether
 #'   or not the user has loved each track.
-#' @inheritParams paginated-endpoint
 #'
 #' @family raw user functions
 #'
-#' @return A vector of LastFM API objects
 #' @export
 raw_user_get_recent_tracks <- function(username, from = NULL, to = NULL, extended = 0, .start_page = 1, .n_pages = NULL) {
   paginate(
@@ -51,14 +51,14 @@ user_get_recent_tracks <- function(username, from = NULL, to = NULL, extended = 
 }
 
 #' Get the top albums listened to by a user. You can stipulate a time period. Sends the overall chart by default.
-#'
+#' 
+#' @inherit paginated-endpoint return params
+#' 
 #' @param username The user name to fetch top albums for.
 #' @param period (optional) overall | 7day | 1month | 3month | 6month | 12month - The time period over which to retrieve top albums for.
-#' @inheritParams paginated-endpoint
 #'
 #' @family raw user functions
 #'
-#' @return A LastFM API object
 #' @export
 raw_user_get_top_albums <- function(username, period = "7day", .start_page = 1, .n_pages = NULL) {
   paginate(
@@ -97,14 +97,14 @@ user_get_top_albums <- function(username, period = "7day", .start_page = 1, .n_p
 #' Get the top artists listened to by a user
 #'
 #' You can stipulate a time period. Sends the overall chart by default.
-#'
+#' 
+#' @inherit paginated-endpoint return params
+#' 
 #' @param username The user name to fetch top artists for.
 #' @param period (optional) overall | 7day | 1month | 3month | 6month | 12month - The time period over which to retrieve top artists for.
-#' @inheritParams paginated-endpoint
 #'
 #' @family raw user functions
 #'
-#' @return A LastFM API object
 #' @export
 raw_user_get_top_artists <- function(username, period = "7day", .start_page = 1, .n_pages = NULL) {
   paginate(
@@ -142,15 +142,15 @@ user_get_top_artists <- function(username, period = "7day", .start_page = 1, .n_
 
 #' Get the top tracks listened to by a user. You can stipulate a time period.
 #' Sends the overall chart by default.
-#'
+#' 
+#' @inherit paginated-endpoint return params
+#' 
 #' @param username The user name to fetch top tracks for.
 #' @param period overall | 7day | 1month | 3month | 6month | 12month - The time
 #'   period over which to retrieve top tracks for.
-#' @inheritParams paginated-endpoint
 #'
 #' @family raw user functions
 #'
-#' @return A LastFM API object
 #' @export
 raw_user_get_top_tracks <- function(username, period = "7day", .start_page = 1, .n_pages = NULL) {
   paginate(
@@ -163,15 +163,10 @@ raw_user_get_top_tracks <- function(username, period = "7day", .start_page = 1, 
 }
 
 #' Title
+#' 
+#' @inheritParams raw_user_get_top_tracks
 #'
-#' @param username 
-#' @param period 
-#' @inheritParams paginated-endpoint
-#'
-#' @return
 #' @export
-#'
-#' @examples
 user_get_top_tracks <- function(username, period = "7day", .start_page = 1, .n_pages = NULL) {
   raw_results <- raw_user_get_top_tracks(username, period, .start_page, .n_pages)
 
@@ -188,16 +183,15 @@ user_get_top_tracks <- function(username, period = "7day", .start_page = 1, .n_p
 }
 
 #' Title
+#' 
+#' @inherit paginated-endpoint return params
 #'
 #' @param username 
 #' @param recent_tracks 
-#' @inheritParams paginated-endpoint
 #' 
 #' @family raw user functions
-#'
-#' @return
+#' 
 #' @export
-#'
 raw_user_get_friends <- function(username, recent_tracks = TRUE, .start_page = 1, .n_pages = NULL) {
   # TODO Add better handling for missing page for folks without friends :-|
   paginate(
@@ -210,32 +204,30 @@ raw_user_get_friends <- function(username, recent_tracks = TRUE, .start_page = 1
   )
 }
 
+#' Title
+#' 
 #' @param username 
 #'
-#' @inheritParams paginated-endpoint
+#' @inherit single-page-endpoint return params
 #' 
 #' @family raw user functions
-#' 
-#' @return 
 #'
 #' @export
-raw_user_get_info <- function(username = NULL, .start_page = 1, .n_pages = NULL) {
+raw_user_get_info <- function(username = NULL, .start_page = 1) {
   lastfmr(
     method = "user.getInfo",
     user = username,
-    .start_page = .start_page,
-    .n_pages = .n_pages
+    .start_page = .start_page
   )
 }
 
+#' Title 
 #' 
-#'
+#' @inherit paginated-endpoint return params
+#' 
 #' @param username The username as a string
-#' @inheritParams paginated-endpoint
 #' 
 #' @family raw user functions
-#' 
-#' @return 
 #'
 #' @export
 raw_user_get_loved_tracks <- function(username, .start_page = 1, .n_pages = NULL) {
@@ -253,14 +245,13 @@ raw_user_get_loved_tracks <- function(username, .start_page = 1, .n_pages = NULL
 #' Items are queried by type using `tagging_type` which can take one of
 #' (artist, album, track).
 #' 
+#' @inherit paginated-endpoint params return
+#' 
 #' @param username The username as a string
 #' @param tag The tag you're interested in.
 #' @param tagging_type A string, see description above for accepted types.
-#' @inheritParams paginated-endpoint
 #' 
 #' @family raw user functions
-#' 
-#' @return 
 #'
 #' @export
 raw_user_get_personal_tags <- function(username, tag, tagging_type, .start_page = 1, .n_pages = NULL) {
@@ -280,19 +271,17 @@ raw_user_get_personal_tags <- function(username, tag, tagging_type, .start_page 
 #' Get top tags used by a user
 #'
 #' @param username Username as a string
-#' @inheritParams paginated-endpoint
 #'
 #' @family raw user functions
 #' 
-#' @return
+#' @inherit single-page-endpoint return
 #' 
 #' @export
-raw_user_get_top_tags <- function(username, .start_page = 1, .n_pages = NULL) {
+raw_user_get_top_tags <- function(username, .start_page = 1) {
   lastfmr(
     method = "user.getTopTags",
     result_node = "toptags",
     user = username,
-    .start_page = .start_page,
-    .n_pages = .n_pages
+    .start_page = .start_page
   )
 }

@@ -7,15 +7,15 @@
 #' @param .page Page to query, by default query the first page
 #'   
 #' @name single-page-endpoint
+#' 
+#' @return A lastfmr API object, see [lastfmr()] for information.
 NULL
 
 #' Query a Last.FM endpoint.
 #'
 #' @param ... named parameters to be passed to the endpoint
-#' 
-#' @inheritParams single-page-endpoint
 #'
-#' @return A LastFM API object.
+#' @inherit single-page-endpoint return params
 #' 
 #' @export
 lastfmr <- function(method, ..., .page = 1, result_node = NULL) {

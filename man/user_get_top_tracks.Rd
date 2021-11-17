@@ -12,18 +12,16 @@ user_get_top_tracks(
 )
 }
 \arguments{
-\item{username}{}
+\item{username}{The user name to fetch top tracks for.}
 
-\item{period}{}
+\item{period}{overall | 7day | 1month | 3month | 6month | 12month - The time
+period over which to retrieve top tracks for.}
 
 \item{.start_page}{the page to start pulling from, by default starts from the
 1st page}
 
 \item{.n_pages}{the total number of pages to pull. If no value is provided,
 all pages are retrieved.}
-}
-\value{
-
 }
 \description{
 Title

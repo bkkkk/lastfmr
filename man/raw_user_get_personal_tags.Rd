@@ -25,9 +25,6 @@ raw_user_get_personal_tags(
 \item{.n_pages}{the total number of pages to pull. If no value is provided,
 all pages are retrieved.}
 }
-\value{
-
-}
 \description{
 Items are queried by type using \code{tagging_type} which can take one of
 (artist, album, track).

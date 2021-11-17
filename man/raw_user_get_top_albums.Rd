@@ -22,9 +22,6 @@ raw_user_get_top_albums(
 \item{.n_pages}{the total number of pages to pull. If no value is provided,
 all pages are retrieved.}
 }
-\value{
-A LastFM API object
-}
 \description{
 Get the top albums listened to by a user. You can stipulate a time period. Sends the overall chart by default.
 }

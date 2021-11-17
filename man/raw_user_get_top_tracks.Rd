@@ -24,9 +24,6 @@ period over which to retrieve top tracks for.}
 \item{.n_pages}{the total number of pages to pull. If no value is provided,
 all pages are retrieved.}
 }
-\value{
-A LastFM API object
-}
 \description{
 Get the top tracks listened to by a user. You can stipulate a time period.
 Sends the overall chart by default.
