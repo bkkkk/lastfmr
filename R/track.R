@@ -32,6 +32,3 @@ track_search <- function(track, artist = NULL, .start_page = 1, .n_pages = NULL)
     )
   }, .path = c("trackmatches", "track"))
 }
-
-# TODO track.getInfo
-# TODO track.getSimilar

@@ -176,9 +176,3 @@ user_get_top_tracks <- function(username, period = "7day", .start_page = 1, .n_p
     )
   })
 }
-
-# TODO user.getFriends
-# TODO user.getInfo
-# TODO user.getLovedTracks
-# TODO user.getPersonalTags
-# TODO user.getTopTags

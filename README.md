@@ -42,4 +42,12 @@ Endpoints supported:
 | user.getTopAlbums    | :heavy_check_mark: | :heavy_check_mark: |
 | user.getTopArtists   | :heavy_check_mark: | :heavy_check_mark: |
 | user.getTopTracks    | :heavy_check_mark: | :x:                |
+| user.getFriends      | :x: | :x: |
+| user.getInfo         | :x: | :x: |
+| user.getLovedTracks  | :x: | :x: |
+| user.getPersonalTags | :x: | :x: |
+| user.getTopTags      | :x: | :x: |
+| track.getInfo | :x: | :x: |
+| track.getSimilar | :x: | :x: |
+
 
