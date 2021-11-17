@@ -4,22 +4,16 @@
 \alias{raw_track_search}
 \title{Search for a track by track name. Returns track matches sorted by relevance.}
 \usage{
-raw_track_search(track, artist = NULL, .start_page = 1, .n_pages = NULL)
+raw_track_search(track, artist = NULL, .page = 1)
 }
 \arguments{
 \item{track}{The track name.}
 
 \item{artist}{Narrow your search by specifying an artist, if not provided the
 endpoint searches across artists}
-
-\item{.start_page}{the page to start pulling from, by default starts from the
-1st page}
-
-\item{.n_pages}{the total number of pages to pull. If no value is provided,
-all pages are retrieved.}
 }
 \value{
-A list of lastfmr API objects
+A lastfmr API object, see \code{\link[=lastfmr]{lastfmr()}} for information.
 }
 \description{
 Search for a track by track name. Returns track matches sorted by relevance.

@@ -41,11 +41,11 @@ Below is a summary of endpoint support:
 | user.getTopAlbums    | :heavy_check_mark: | :heavy_check_mark: |
 | user.getTopArtists   | :heavy_check_mark: | :heavy_check_mark: |
 | user.getTopTracks    | :heavy_check_mark: | :x:                |
-| user.getFriends      | :x: | :x: |
-| user.getInfo         | :x: | :x: |
-| user.getLovedTracks  | :x: | :x: |
-| user.getPersonalTags | :x: | :x: |
-| user.getTopTags      | :x: | :x: |
+| user.getFriends      | :heavy_check_mark: | :x: |
+| user.getInfo         | :heavy_check_mark: | :x: |
+| user.getLovedTracks  | :heavy_check_mark: | :x: |
+| user.getPersonalTags | :heavy_check_mark: | :x: |
+| user.getTopTags      | :heavy_check_mark: | :x: |
 | track.getInfo | :x: | :x: |
 | track.getSimilar | :x: | :x: |
 
