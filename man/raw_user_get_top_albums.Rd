@@ -30,8 +30,13 @@ Get the top albums listened to by a user. You can stipulate a time period. Sends
 }
 \seealso{
 Other raw user functions: 
+\code{\link{raw_user_get_friends}()},
+\code{\link{raw_user_get_info}()},
+\code{\link{raw_user_get_loved_tracks}()},
+\code{\link{raw_user_get_personal_tags}()},
 \code{\link{raw_user_get_recent_tracks}()},
 \code{\link{raw_user_get_top_artists}()},
+\code{\link{raw_user_get_top_tags}()},
 \code{\link{raw_user_get_top_tracks}()}
 }
 \concept{raw user functions}

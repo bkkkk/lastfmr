@@ -39,8 +39,13 @@ Get a list of the recent tracks listened to by this user.
 }
 \seealso{
 Other raw user functions: 
+\code{\link{raw_user_get_friends}()},
+\code{\link{raw_user_get_info}()},
+\code{\link{raw_user_get_loved_tracks}()},
+\code{\link{raw_user_get_personal_tags}()},
 \code{\link{raw_user_get_top_albums}()},
 \code{\link{raw_user_get_top_artists}()},
+\code{\link{raw_user_get_top_tags}()},
 \code{\link{raw_user_get_top_tracks}()}
 }
 \concept{raw user functions}
