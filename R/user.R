@@ -166,8 +166,7 @@ raw_user_get_top_tracks <- function(username, period = "7day", .start_page = 1, 
 #'
 #' @param username 
 #' @param period 
-#' @param .start_page 
-#' @param .n_pages 
+#' @inheritParams paginated-endpoint
 #'
 #' @return
 #' @export
@@ -213,8 +212,7 @@ raw_user_get_friends <- function(username, recent_tracks = TRUE, .start_page = 1
 
 #' @param username 
 #'
-#' @param .start_page 
-#' @param .n_pages 
+#' @inheritParams paginated-endpoint
 #' 
 #' @family raw user functions
 #' 
@@ -230,10 +228,10 @@ raw_user_get_info <- function(username = NULL, .start_page = 1, .n_pages = NULL)
   )
 }
 
-#' @param username 
+#' 
 #'
-#' @param .start_page 
-#' @param .n_pages 
+#' @param username The username as a string
+#' @inheritParams paginated-endpoint
 #' 
 #' @family raw user functions
 #' 
@@ -255,7 +253,7 @@ raw_user_get_loved_tracks <- function(username, .start_page = 1, .n_pages = NULL
 #' Items are queried by type using `tagging_type` which can take one of
 #' (artist, album, track).
 #' 
-#' @param username The user who performed the taggings.
+#' @param username The username as a string
 #' @param tag The tag you're interested in.
 #' @param tagging_type A string, see description above for accepted types.
 #' @inheritParams paginated-endpoint

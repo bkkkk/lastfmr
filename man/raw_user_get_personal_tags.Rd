@@ -13,7 +13,7 @@ raw_user_get_personal_tags(
 )
 }
 \arguments{
-\item{username}{The user who performed the taggings.}
+\item{username}{The username as a string}
 
 \item{tag}{The tag you're interested in.}
 
