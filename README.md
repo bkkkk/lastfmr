@@ -27,8 +27,7 @@ The package provides functions for each of the endpoints and a generic API funct
 
 The function names are mapped directly from the endpoint name
 
-Endpoints supported:
-
+Below is a summary of endpoint support:
 
 | Endpoint             | Raw                | Tidy               | 
 |----------------------|--------------------|--------------------|
