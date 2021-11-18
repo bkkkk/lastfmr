@@ -26,13 +26,16 @@ raw_track_get_info(
 
 \item{lang}{(Optional) The language to return the biography in.}
 }
+\value{
+A lastfmr API object, see \code{\link[=lastfmr]{lastfmr()}} for information.
+}
 \description{
 The track can be retrieved by:
 1. Artist and track name OR
 2. MusicBrainz ID
 }
 \details{
-One and only one of the above must be provided. If both are provided this
+One and only one of the above mu?t be provided. If both are provided this
 defaults to using the artist and track name.
 
 If the artist and track names provided are misspelled in the search query, this endpoint

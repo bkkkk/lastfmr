@@ -1,24 +1,35 @@
-#' Search for a track by track name. Returns track matches sorted by relevance.
+#' Search for a track by track name
+#' 
+#' Returns track matches sorted by relevance.
 #'
-#' @inherit single-page-endpoint return
+#' @inherit paginated-endpoint params return
 #'
 #' @param track The track name.
 #' @param artist Narrow your search by specifying an artist, if not provided the
 #'   endpoint searches across artists
 #'
 #' @export
-raw_track_search <- function(track, artist = NULL, .page = 1) {
-  lastfmr(
+raw_track_search <- function(track, artist = NULL, .start_page = 1, .n_pages = NULL) {
+  paginate(
     method = "track.search",
     result_node = "results",
     track = track,
     artist = artist,
-    .page = .page
+    .start_page = .start_page,
+    .n_pages = .n_pages
   )
 }
 
+#' Search for a track by track name.
+#' 
+#' Returns track matches sorted by relevance as a tidy tibble.
+#'
+#' @inheritParams raw_track_search
+#' @inherit tidy-function return
+#'
+#' @export
 track_search <- function(track, artist = NULL, .start_page = 1, .n_pages = NULL) {
-  raw_response <- raw_track_search(track, artist, .start_page, .n_pages)
+  raw_response <- raw_track_search(track, artist, .start_page = 1, .n_pages = NULL)
 
   tidy_raw_response(raw_response, function(record) {
     tibble::tibble(
@@ -38,7 +49,7 @@ track_search <- function(track, artist = NULL, .start_page = 1, .n_pages = NULL)
 #'     1. Artist and track name OR
 #'     2. MusicBrainz ID
 #'
-#' One and only one of the above must be provided. If both are provided this
+#' One and only one of the above mu?t be provided. If both are provided this
 #' defaults to using the artist and track name.
 #'
 #' If the artist and track names provided are misspelled in the search query, this endpoint
@@ -49,6 +60,8 @@ track_search <- function(track, artist = NULL, .start_page = 1, .n_pages = NULL)
 #'
 #' The biography language is English by default but can be changed using the `lang`
 #' argument which accepts an [ISO 639-1 country code](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes).
+#'
+#' @inherit single-page-endpoint return
 #'
 #' @param track Required unless mbid is provided. The track name as a string.
 #' @param artist Required unless mbid is provided. The artist name as a string.
@@ -90,7 +103,9 @@ raw_track_get_info <- function(track = NULL, artist = NULL, mbid = NULL, autocor
 #'
 #' The biography language is English by default but can be changed using the `lang`
 #' argument which accepts an [ISO 639-1 country code](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes).
-#'
+#' 
+#' @inherit single-page-endpoint return
+#' 
 #' @param track Required unless mbid is provided. The track name as a string.
 #' @param artist Required unless mbid is provided. The artist name as a string.
 #' @param mbid (Optional) MusicBrainz ID for the track as a string. Can be provided instead of artist and track names
