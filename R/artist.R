@@ -7,7 +7,7 @@
 #' @param artist Artist name as a string.
 #'
 #' @export
-raw_artist_search <- function(track, .start_page = 1, .n_pages = NULL) {
+raw_artist_search <- function(artist, .start_page = 1, .n_pages = NULL) {
   paginate(
     method = "artist.search",
     result_node = "results",

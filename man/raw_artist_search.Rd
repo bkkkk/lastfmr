@@ -4,16 +4,16 @@
 \alias{raw_artist_search}
 \title{Search for an artist by name}
 \usage{
-raw_artist_search(track, .start_page = 1, .n_pages = NULL)
+raw_artist_search(artist, .start_page = 1, .n_pages = NULL)
 }
 \arguments{
+\item{artist}{Artist name as a string.}
+
 \item{.start_page}{the page to start pulling from, by default starts from the
 1st page}
 
 \item{.n_pages}{the total number of pages to pull. If no value is provided,
 all pages are retrieved.}
-
-\item{artist}{Artist name as a string.}
 }
 \description{
 Returns artist matches sorted by relevance.
