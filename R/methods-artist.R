@@ -35,11 +35,11 @@ sanitize_artist_search_parameters <- function(artist = NULL, mbid = NULL) {
   missing_artist <- is.null(artist)
   missing_mbid <- is.null(mbid)
   if (missing_artist && missing_mbid) {
-    abort("You must provide `artist` or `mbid`.")
+    cli_abort("You must provide `artist` or `mbid`.")
   }
 
   if (!xor(missing_artist, missing_mbid)) {
-    warn("You must only one `artist` or `mbid`. Both are set, defaulting to `artist`")
+    cli_warn("You must only one `artist` or `mbid`. Both are set, defaulting to `artist`")
     mbid <- NULL
   }
 

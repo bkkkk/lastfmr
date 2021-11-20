@@ -21,6 +21,7 @@ Imports:
     jsonlite,
     logger,
     lubridate,
+    magrittr,
     purrr,
     rlang,
     tibble,

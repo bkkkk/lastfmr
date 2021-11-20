@@ -2,7 +2,10 @@
 "_PACKAGE"
 
 ## usethis namespace: start
+#' @importFrom cli cli_abort
+#' @importFrom cli cli_warn
 #' @importFrom dplyr arrange
+#' @importFrom dplyr desc
 #' @importFrom dplyr distinct
 #' @importFrom glue glue
 #' @importFrom httr BROWSE
@@ -17,12 +20,14 @@
 #' @importFrom httr2 resp_body_json
 #' @importFrom logger log_debug
 #' @importFrom logger log_info
+#' @importFrom magrittr %>%
 #' @importFrom purrr compact
 #' @importFrom purrr has_element
 #' @importFrom purrr map
 #' @importFrom purrr map_chr
 #' @importFrom purrr map_dbl
 #' @importFrom purrr map_df
+#' @importFrom purrr pluck
 #' @importFrom rlang %||%
 #' @importFrom rlang abort
 #' @importFrom rlang arg_match
