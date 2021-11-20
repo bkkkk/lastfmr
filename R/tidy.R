@@ -8,11 +8,11 @@
 NULL
 
 tidy_raw_response <- function(.x, .tidy, .path = "data") {
-  path <- unique(c("data", path))
+  .path <- unique(c("data", .path))
   .result <- if (inherits(.x, "list")) {
-    map(.x, path)
+    map(.x, .path)
   } else {
-    pluck_data(.x, path)
+    pluck_data(.x, .path)
   }
   map_df(.result, .tidy)
 }
