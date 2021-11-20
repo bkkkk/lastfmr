@@ -4,7 +4,14 @@
 #' 
 #' Get last.fm overall chart rankings for tags, tracks, and artists.
 #' 
+#' [raw_chart_get_top_artists()], [raw_chart_get_top_tags()],
+#' and [raw_chart_get_top_tracks()] retrieve the overall top artists, tags, and tracks, respectively.
+#' 
 #' @inheritParams paginated-endpoint
+#' 
+#' @returns 
+#' 
+#' All endpoints return a list of lastfmr objects.
 #' 
 #' @name chart-methods
 NULL

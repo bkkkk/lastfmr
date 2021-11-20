@@ -20,6 +20,12 @@ raw_chart_get_top_tracks(.start_page = 1, .n_pages = NULL)
 \item{.n_pages}{The total number of pages to pull. If no value is provided,
 all pages are retrieved.}
 }
+\value{
+All endpoints return a list of lastfmr objects.
+}
 \description{
 Get last.fm overall chart rankings for tags, tracks, and artists.
+
+\code{\link[=raw_chart_get_top_artists]{raw_chart_get_top_artists()}}, \code{\link[=raw_chart_get_top_tags]{raw_chart_get_top_tags()}},
+and \code{\link[=raw_chart_get_top_tracks]{raw_chart_get_top_tracks()}} retrieve the overall top artists, tags, and tracks, respectively.
 }
