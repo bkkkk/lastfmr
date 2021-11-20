@@ -19,7 +19,6 @@ get_session_key <- function() {
   }
 }
 
-#' @export
 SessionKey <- function(resp) {
   structure(
     list(

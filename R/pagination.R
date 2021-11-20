@@ -75,7 +75,6 @@ paginate <- function(method, ..., result_node = NULL, .start_page = 1, .n_pages 
 #' @returns
 #' * [get_current_page()] returns an integer
 #' * [has_next_page()] returns a boolean
-#' * [get_next_page()] returns a [lastfm] object
 #'
 #' @keywords internal
 #'

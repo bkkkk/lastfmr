@@ -24,10 +24,12 @@
 #'   or not the user has loved each track.
 #' @param recent_tracks (Optional) Whether to include recent tracks fro friends in the response
 #' @param tag The tag you're interested in.
+#' 
 #' @inheritParams match_period
 #' @inheritParams match_tagging_type
 #'
 #' @inherit paginated-endpoint params
+#' @inherit single-page-endpoint params
 #' 
 #' @returns 
 #' 

@@ -121,6 +121,8 @@ One of overall, 7day, 1month, 3month, 6month, 12month. \verb{7day} by default.}
 
 \item{recent_tracks}{(Optional) Whether to include recent tracks fro friends in the response}
 
+\item{.page}{Page to query, by default query the first page}
+
 \item{tag}{The tag you're interested in.}
 
 \item{tagging_type}{The objects on which the tags were applied as a string}

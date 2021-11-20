@@ -3,7 +3,6 @@
 S3method(print,fm_session_key)
 S3method(print,obfuscated)
 S3method(str,obfuscated)
-export(SessionKey)
 export(auth_as)
 export(auth_list)
 export(chart_get_top_artists)

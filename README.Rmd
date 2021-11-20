@@ -29,10 +29,24 @@ You can install the development version of lastfmr from [GitHub](https://github.
 devtools::install_github("bkkkk/lastfmr")
 ```
 
-## Getting Started
+## Basic usage
 
-``` r
+```{r}
 library(lastfmr)
+library(tidyverse)
+library(glue)
+library(ggplot2)
+
+lastfmr::chart_get_top_tracks(.n_pages = 10) %>%
+  mutate(
+    label = glue::glue("{name} by {artist}")
+  ) %>%
+  top_n(10, playcount) %>%
+  ggplot(aes(reorder(label, playcount), playcount)) + geom_col() +
+  coord_flip() + labs(
+    y = "Play Count", x = "", title = "BTS hold the Top 5 most played songs on last.fm",
+    subtitle = "Top 10 Songs"
+  )
 ```
 
 The package provides functions for each of the endpoints and a generic API function. For each of the endpoints there are 2 functions:
