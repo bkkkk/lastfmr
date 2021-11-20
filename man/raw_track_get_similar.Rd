@@ -24,7 +24,7 @@ raw_track_get_similar(
 \item{lang}{(Optional) The biography language.}
 }
 \value{
-A lastfmr API object, see \code{\link[=lastfm]{lastfm()}} for information.
+A lastfm API object, see \code{\link[=lastfm]{lastfm()}} for information.
 }
 \description{
 The search is performed by providing a source track by:
