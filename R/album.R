@@ -1,9 +1,32 @@
-#' Search for album by name
+#' Album Methods
+#' 
+#' @description 
+#' 
+#' The methods are used to retrieve information about albums:
+#' 
+#' * [raw_album_get_info()] - Search for an album by name.
+#' * [raw_album_search()] - Retrieve information about an album exactly by artist and album name or MBID. If both are provided the Artist and Album name are used by default.
+#' 
 #'
-#' @param album Album name as a string
+#' @inherit common-params params
+#' @inheritSection common-params Language Setting
+#' @inheritSection common-params Name Autocorrection
+#' 
+#' @param album Album name as a string.
+#' @param artist Artist name as a string.
+#' @param mbid (Optional) MusicBrainz ID for the album as a string. Can be provided instead of artist and album names
+#' 
 #' @inheritParams paginated-endpoint
 #'
-#' @return A vector of LastFM API objects
+#' @returns
+#' 
+#' * [raw_album_search()] returns a list of lastfmr objects
+#' * [raw_album_get_info()] returns a single lastfmr object
+#' 
+#' @name album-methods
+NULL
+
+#' @rdname album-methods
 #' @export
 raw_album_search <- function(album, .start_page = 1, .n_pages = NULL) {
   paginate(
@@ -15,30 +38,7 @@ raw_album_search <- function(album, .start_page = 1, .n_pages = NULL) {
   )
 }
 
-#' Get album information
-#' 
-#' The album can be retrieved by:
-#'     1. Artist and album name OR
-#'     2. MusicBrainz ID
-#' 
-#' One and only one of the above must be provided. If both are provided this
-#' defaults to using the artist and album name.
-#'
-#' If the artist name provided is misspelled in the search query, this endpoint
-#' returns the correct name by default. This can be overriden by calling the function
-#' with function argument `autocorrect` set to `FALSE`.
-#' 
-#' Album play count is added to the result if the `username` argument is provided.
-#'
-#' @inherit common-params params
-#' @inheritSection common-params Language Setting
-#' 
-#' @param artist Required unless mbid is provided. The artist name as a string.
-#' @param album Required unless mbid is provided. The album name as a string.
-#' @param mbid (Optional) MusicBrainz ID for the album as a string. Can be provided instead of artist and album names
-#' @param username (Optional) Username as a string
-#'
-#' @return A vector of LastFM API objects
+#' @rdname album-methods
 #' @export
 raw_album_get_info <- function(artist = NULL, album = NULL, mbid = NULL, autocorrect = TRUE, username = NULL, lang = NULL) {
   params <- sanitize_raw_album_get_info_parameters(artist, album, mbid)
