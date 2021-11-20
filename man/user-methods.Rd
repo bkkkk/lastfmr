@@ -127,8 +127,8 @@ One of overall, 7day, 1month, 3month, 6month, 12month. \verb{7day} by default.}
 }
 \value{
 \itemize{
-\item \code{\link[=raw_user_get_info]{raw_user_get_info()}} and \code{\link[=raw_user_get_top_tags]{raw_user_get_top_tags()}} return a single lastfm object.
-\item All other raw functions return a list of lastfm objects
+\item \code{\link[=raw_user_get_info]{raw_user_get_info()}} and \code{\link[=raw_user_get_top_tags]{raw_user_get_top_tags()}} return a single \link{lastfm} object.
+\item All other raw functions return a list of \link{lastfm} objects
 \item All tidy functions return a tibble
 }
 }

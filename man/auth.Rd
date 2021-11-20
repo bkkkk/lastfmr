@@ -23,7 +23,7 @@ request_user_auth(request_token, auth_client = lastfm_auth_client())
 fetch_auth_token(request_token, auth_client = lastfm_auth_client())
 }
 \arguments{
-\item{auth_client}{An lastfm_auth_client object built with \code{\link[=lastfm_auth_client]{lastfm_auth_client()}} function}
+\item{auth_client}{An \link{lastfm_auth_client} object built with \code{\link[=lastfm_auth_client]{lastfm_auth_client()}} function}
 
 \item{.skip_auth}{Whether to skip the user authorization request, FALSE by default.}
 

@@ -38,8 +38,8 @@ all pages are retrieved.}
 }
 \value{
 \itemize{
-\item \code{\link[=raw_album_search]{raw_album_search()}} returns a list of lastfm objects
-\item \code{\link[=raw_album_get_info]{raw_album_get_info()}} returns a single lastfm object
+\item \code{\link[=raw_album_search]{raw_album_search()}} returns a list of \link{lastfm} objects
+\item \code{\link[=raw_album_get_info]{raw_album_get_info()}} returns a single \link{lastfm} object
 }
 }
 \description{

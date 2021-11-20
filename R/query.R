@@ -8,7 +8,7 @@ prepare_query <- function(method, ..., .page) {
 get_limit <- function() {
   .limit <- getOption("lastfmr.page_size")
   if (.limit > 50) {
-    abort("Your provided page ({limit}) size is larger than the API limit of 50.")
+    cli_abort("Your provided page ({limit}) size is larger than the API limit of 50.")
   }
   .limit
 }

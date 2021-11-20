@@ -11,7 +11,7 @@
 \item{.page}{Page to query, by default query the first page}
 }
 \value{
-A lastfm API object, see \code{\link[=lastfm]{lastfm()}} for information.
+A \link{lastfm} API object.
 }
 \description{
 Used for documenting single-query endpoints

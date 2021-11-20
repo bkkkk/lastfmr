@@ -30,12 +30,12 @@ NULL
 #' @keywords internal
 sanitize_raw_album_get_info_parameters <- function(artist = NULL, album = NULL, mbid = NULL) {
   if (is.null(artist) && is.null(album) && is.null(mbid)) {
-    abort("`raw_album_get_info` expects to get either an artist and album or the mbid. None were provided.")
+    cli_abort("`raw_album_get_info` expects to get either an artist and album or the mbid. None were provided.")
   }
 
   if (!is.null(mbid)) {
     if (!is.null(artist) && !is.null(album)) {
-      warn("`raw_album_get_info` got both artist/album names and mbid. The endpoint accepts one or the other. Defaulting to artist and album.")
+      cli_warn("`raw_album_get_info` got both artist/album names and mbid. The endpoint accepts one or the other. Defaulting to artist and album.")
       mbid <- NULL
     }
   }
