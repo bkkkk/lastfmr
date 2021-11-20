@@ -53,3 +53,4 @@ po/*~
 
 # Local History for Visual Studio Code
 .history/
+inst/doc
