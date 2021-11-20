@@ -12,7 +12,7 @@ is_lastfm_auth_client <- function(x) {
   inherits(x, "lastfm_auth_client")
 }
 
-print.lastfm_auth_client <- function(x) {
+print.lastfm_auth_client <- function(x, ...) {
   cli::cli_text(cli::style_bold("<", paste(class(x), collapse = "/"), ">"))
   args <- compact(x)
   args[["client_secret"]] <- NULL

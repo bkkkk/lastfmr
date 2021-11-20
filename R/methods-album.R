@@ -7,13 +7,13 @@
 #' * [raw_album_get_info()] - Search for an album by name.
 #' * [raw_album_search()] - Retrieve information about an album exactly by artist and album name or MBID. If both are provided the Artist and Album name are used by default.
 #'
-#'
 #' @inherit common-params params
 #' @inheritSection common-params Language Setting
 #' @inheritSection common-params Name Autocorrection
 #'
 #' @param album Album name as a string.
 #' @param artist Artist name as a string.
+#' @param username (Optional) Username as a string. If provided, the user playcount of the album is included in the response.
 #' @param mbid (Optional) MusicBrainz ID for the album as a string. Can be provided instead of artist and album names
 #'
 #' @inheritParams paginated-endpoint

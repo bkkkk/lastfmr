@@ -31,7 +31,7 @@ SessionKey <- function(resp) {
 }
 
 #' @export
-print.fm_session_key <- function(x) {
+print.fm_session_key <- function(x, ...) {
   cat(glue("Key for account: {x$account_name}"))
 }
 
@@ -51,7 +51,7 @@ deobfuscate <- function(x) {
 }
 
 #' @export
-print.obfuscated <- function(x) {
+print.obfuscated <- function(x, ...) {
   cat("<OBFUSCATED>", sep = "\n")
 }
 
