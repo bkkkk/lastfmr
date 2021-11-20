@@ -19,7 +19,7 @@ default_cache_location <- function() {
 #'
 #' @export
 #' @rdname auth_cache
-auth_as <- function(name) {
+auth_as <- function(name = NULL) {
   old <- .state$auth
   .state$auth <- auth_load(name)
   invisible(old)
@@ -56,7 +56,7 @@ auth_save <- function(auth, name) {
 #' @rdname auth_cache
 #'
 #' @keywords internal
-auth_load <- function(name) {
+auth_load <- function(name = NULL) {
   if (is.null(name)) {
     cli::cli_inform("Loading default last.fm credentials.")
     name <- "default"

@@ -11,10 +11,9 @@ decrypt <- function(x) {
 }
 
 #' @keywords internal
-get_session_key <- function(auth = NULL) {
+get_session_key <- function() {
   if (is.null(.state$auth)) {
-    cli::cli_warn("Session key is not set. Loading identity `{auth}`")
-    auth_as(auth)
+    auth_as()
   } else {
     .state$auth$key
   }
