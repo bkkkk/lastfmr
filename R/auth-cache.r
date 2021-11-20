@@ -58,7 +58,7 @@ auth_save <- function(auth, name) {
 #' @keywords internal
 auth_load <- function(name = NULL) {
   if (is.null(name)) {
-    crayon::silver("Loading default last.fm credentials.")
+    cli::col_silver("Loading default last.fm credentials.")
     name <- "default"
   }
   path <- auth_path(paste0(name, ".rds"))
