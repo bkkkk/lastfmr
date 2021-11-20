@@ -8,13 +8,13 @@
 \alias{auth_load}
 \title{Simple caching mechanism for auth secrets}
 \usage{
-auth_as(name)
+auth_as(name = NULL)
 
 auth_list()
 
 auth_save(auth, name)
 
-auth_load(name)
+auth_load(name = NULL)
 }
 \arguments{
 \item{name}{the name of the cache as a string}
@@ -22,15 +22,13 @@ auth_load(name)
 \item{auth}{the authentication token as a string}
 }
 \value{
-The previous authentication identity invisibly
-
-invisibly returns path as string
+The previously set authentication token if any
 }
 \description{
 Caching of authorization secrets relies on a simple rds file save/load mechanism.
 }
 \details{
 Users primarily interact with the \code{\link[=auth_as]{auth_as()}} function to set the authentication
-secrets for the session. Authentication identities are managed by the name \code{auth}.
+secrets for the session. Authentication identities are managed by name.
 }
 \keyword{internal}

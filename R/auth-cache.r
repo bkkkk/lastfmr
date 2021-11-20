@@ -3,7 +3,7 @@
 #' Caching of authorization secrets relies on a simple rds file save/load mechanism.
 #'
 #' Users primarily interact with the [auth_as()] function to set the authentication
-#' secrets for the session. Authentication identities are managed by the name `auth`.
+#' secrets for the session. Authentication identities are managed by name.
 #'
 #' @param auth the authentication token as a string
 #' @param name the name of the cache as a string
@@ -15,7 +15,7 @@ default_cache_location <- function() {
   rappdirs::user_cache_dir("lastfmr")
 }
 
-#' @return The previous authentication identity invisibly
+#' @return The previously set authentication token if any
 #'
 #' @export
 #' @rdname auth_cache
@@ -39,8 +39,6 @@ auth_path <- function(...) {
   file.path(path, ...)
 }
 
-#' @return invisibly returns path as string
-#'
 #' @rdname auth_cache
 #'
 #' @keywords internal

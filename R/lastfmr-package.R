@@ -22,6 +22,7 @@
 #' @importFrom purrr map_dbl
 #' @importFrom rlang %||%
 #' @importFrom rlang abort
+#' @importFrom rlang arg_match
 #' @importFrom tibble tibble
 #' @importFrom usethis ui_info
 #' @importFrom usethis ui_yeah
