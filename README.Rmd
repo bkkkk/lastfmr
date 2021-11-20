@@ -1,20 +1,28 @@
+---
+output: github_document
+---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
 
 # lastfmr
 
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of lastfmr is to simplify the work of interacting with the
-last.fm API to get information about your favourite artists, albums, and
-collecting scrobbles in a tidy format. Pagination is taken care of for
-you and the data is organized with sensible column names and formatting.
+The goal of lastfmr is to simplify the work of interacting with the last.fm API to get information about your favourite artists, albums, and collecting scrobbles in a tidy format. Pagination is taken care of for you and the data is organized with sensible column names and formatting.
 
 ## Installation
 
-You can install the development version of lastfmr from
-[GitHub](https://github.com/) with:
+You can install the development version of lastfmr from [GitHub](https://github.com/) with:
 
 ``` r
 devtools::install_github("bkkkk/lastfmr")
@@ -26,21 +34,17 @@ devtools::install_github("bkkkk/lastfmr")
 library(lastfmr)
 ```
 
-The package provides functions for each of the endpoints and a generic
-API function. For each of the endpoints there are 2 functions:
+The package provides functions for each of the endpoints and a generic API function. For each of the endpoints there are 2 functions:
 
--   A “raw” function that a `lastfm_api` object which contains the
-    concatenate result as well as additional information on the request
-    and response. The results here use the raw column names from the
-    last.fm API, and nested data.
--   A “tidy” function that returns a concatenated `tibble` with more
-    sensible column names and flattened nested structures.
+* A "raw" function that a `lastfm_api` object which contains the concatenate result as well as additional information on the request and response. The results here use the raw column names from the last.fm API, and nested data.
+* A "tidy" function that returns a concatenated `tibble` with more sensible column names and flattened nested structures.
 
 The function names are mapped directly from the endpoint name
 
 Below is a summary of endpoint support:
 
-| Endpoint             | Raw                | Tidy               |
+
+| Endpoint             | Raw                | Tidy               | 
 |----------------------|--------------------|--------------------|
 | album.getInfo        | :heavy_check_mark: | :x:                |
 | album.search         | :heavy_check_mark: | :x:                |
