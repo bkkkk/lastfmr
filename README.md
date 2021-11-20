@@ -44,9 +44,9 @@ Below is a summary of endpoint support:
 |----------------------|--------------------|--------------------|
 | album.getInfo        | :heavy_check_mark: | :x:                |
 | album.search         | :heavy_check_mark: | :x:                |
-| chart.getTopArtists  | :heavy_check_mark: | :x:                |
-| chart.getTopTags     | :heavy_check_mark: | :x:                |
-| chart.getTopTracks   | :heavy_check_mark: | :x:                |
+| chart.getTopArtists  | :heavy_check_mark: | :heavy_check_mark: |
+| chart.getTopTags     | :heavy_check_mark: | :heavy_check_mark: |
+| chart.getTopTracks   | :heavy_check_mark: | :heavy_check_mark: |
 | track.search         | :heavy_check_mark: | :x:                |
 | track.getInfo        | :heavy_check_mark: | :x:                |
 | track.getSimilar     | :heavy_check_mark: | :x:                |
