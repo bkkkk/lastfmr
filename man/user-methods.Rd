@@ -121,14 +121,16 @@ One of overall, 7day, 1month, 3month, 6month, 12month. \verb{7day} by default.}
 
 \item{recent_tracks}{(Optional) Whether to include recent tracks fro friends in the response}
 
+\item{.page}{Page to query, by default query the first page}
+
 \item{tag}{The tag you're interested in.}
 
 \item{tagging_type}{The objects on which the tags were applied as a string}
 }
 \value{
 \itemize{
-\item \code{\link[=raw_user_get_info]{raw_user_get_info()}} and \code{\link[=raw_user_get_top_tags]{raw_user_get_top_tags()}} return a single lastfmr object.
-\item All other raw functions return a list of lastfmr objects
+\item \code{\link[=raw_user_get_info]{raw_user_get_info()}} and \code{\link[=raw_user_get_top_tags]{raw_user_get_top_tags()}} return a single \link{lastfm} object.
+\item All other raw functions return a list of \link{lastfm} objects
 \item All tidy functions return a tibble
 }
 }

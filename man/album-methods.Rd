@@ -32,12 +32,14 @@ all pages are retrieved.}
 
 \item{autocorrect}{(Optional) Whether to correct the artist/album/track name names provided in the response. Defaults to TRUE if not provided.}
 
+\item{username}{(Optional) Username as a string. If provided, the user playcount of the album is included in the response.}
+
 \item{lang}{(Optional) The biography language.}
 }
 \value{
 \itemize{
-\item \code{\link[=raw_album_search]{raw_album_search()}} returns a list of lastfmr objects
-\item \code{\link[=raw_album_get_info]{raw_album_get_info()}} returns a single lastfmr object
+\item \code{\link[=raw_album_search]{raw_album_search()}} returns a list of \link{lastfm} objects
+\item \code{\link[=raw_album_get_info]{raw_album_get_info()}} returns a single \link{lastfm} object
 }
 }
 \description{

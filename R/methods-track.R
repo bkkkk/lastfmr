@@ -74,7 +74,7 @@ track_search <- function(track, artist = NULL, .start_page = 1, .n_pages = NULL)
 raw_track_get_info <- function(track = NULL, artist = NULL, mbid = NULL, autocorrect = TRUE, username = NULL, lang = NULL) {
   params <- sanitize_raw_track_get_info_parameters(artist, track, mbid)
 
-  lastfmr(
+  lastfm(
     method = "track.getInfo",
     result_node = "track",
     artist = params[["artist"]],
@@ -110,7 +110,7 @@ raw_track_get_info <- function(track = NULL, artist = NULL, mbid = NULL, autocor
 raw_track_get_similar <- function(track = NULL, artist = NULL, mbid = NULL, autocorrect = TRUE, lang = NULL) {
   params <- sanitize_raw_track_get_info_parameters(artist, track, mbid)
 
-  lastfmr(
+  lastfm(
     method = "track.getSimilar",
     result_node = "similartracks",
     artist = params[["artist"]],
@@ -125,12 +125,12 @@ raw_track_get_similar <- function(track = NULL, artist = NULL, mbid = NULL, auto
 #' @keywords internal
 sanitize_raw_track_get_info_parameters <- function(artist = NULL, track = NULL, mbid = NULL) {
   if (is.null(artist) && is.null(track) && is.null(mbid)) {
-    abort("`raw_track_get_info` expects to get either an artist and track or the mbid. None were provided.")
+    cli_abort("`raw_track_get_info` expects to get either an artist and track or the mbid. None were provided.")
   }
 
   if (!is.null(mbid)) {
     if (!is.null(artist) && !is.null(track)) {
-      warn("`raw_track_get_info` got both artist/track names and mbid. The endpoint accepts one or the other. Defaulting to artist and album.")
+      cli_warn("`raw_track_get_info` got both artist/track names and mbid. The endpoint accepts one or the other. Defaulting to artist and album.")
       mbid <- NULL
     }
   }

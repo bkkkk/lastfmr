@@ -19,7 +19,7 @@ NULL
 #' @inheritParams paginated-endpoint
 #' @inheritParams single-page-endpoint
 #'
-#' @return A list of lastfmr objects
+#' @return A list of [lastfm] objects
 #' @export
 paginate <- function(method, ..., result_node = NULL, .start_page = 1, .n_pages = NULL) {
   out <- vector("list", length = ifelse(is.null(.n_pages), 10, .n_pages))
@@ -33,7 +33,7 @@ paginate <- function(method, ..., result_node = NULL, .start_page = 1, .n_pages 
   withr::defer(pb$terminate())
 
   repeat ({
-    resp <- lastfmr(method, ..., result_node = result_node, .page = .start_page + i - 1)
+    resp <- lastfm(method, ..., result_node = result_node, .page = .start_page + i - 1)
 
     out[[i]] <- resp
 
@@ -70,12 +70,11 @@ paginate <- function(method, ..., result_node = NULL, .start_page = 1, .n_pages 
 #' response and the total number of pages available, respectively.
 #' * [has_next_page()] checks if there are more pages after the current page.
 #'
-#' @param resp lastfmr response object
+#' @param resp lastfm object
 #'
 #' @returns
 #' * [get_current_page()] returns an integer
 #' * [has_next_page()] returns a boolean
-#' * [get_next_page()] returns a `lastfmr` object
 #'
 #' @keywords internal
 #'
@@ -85,7 +84,7 @@ NULL
 #' @rdname pagination_helper
 get_current_page <- function(resp) {
   if (is.null(get_response_attr(resp)$page)) {
-    abort(glue("The response is missing the current page information: {resp$data}"))
+    cli_abort(glue("The response is missing the current page information: {resp$data}"))
   }
 
   as.integer(get_response_attr(resp)$page)

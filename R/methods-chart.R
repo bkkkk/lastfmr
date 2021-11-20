@@ -11,7 +11,7 @@
 #' 
 #' @returns 
 #' 
-#' * All raw endpoints return a list of lastfmr objects.
+#' * All raw endpoints return a list of lastfm objects.
 #' * All tidy endpoints return a Tibble.
 #' 
 #' @name chart-methods

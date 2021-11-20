@@ -10,21 +10,15 @@
 \usage{
 auth_client_auth_request(req, auth_client = lastfm_auth_client(), .sign = TRUE)
 
-lastfm_auth(
-  auth_client = lastfm_auth_client(),
-  .skip_auth = FALSE,
-  .auth = "default"
-)
+lastfm_auth(.skip_auth = FALSE, .auth = "default")
 
-fetch_request_token(auth_client = lastfm_auth_client())
+fetch_request_token(auth_client)
 
-request_user_auth(request_token, auth_client = lastfm_auth_client())
+request_user_auth(request_token, auth_client)
 
-fetch_auth_token(request_token, auth_client = lastfm_auth_client())
+fetch_auth_token(request_token, auth_client)
 }
 \arguments{
-\item{auth_client}{An lastfm_auth_client object built with \code{\link[=lastfm_auth_client]{lastfm_auth_client()}} function}
-
 \item{.skip_auth}{Whether to skip the user authorization request, FALSE by default.}
 
 \item{.auth}{Name of authentication identity as a string, defaults to \code{default}}
@@ -33,7 +27,7 @@ fetch_auth_token(request_token, auth_client = lastfm_auth_client())
 }
 \value{
 \itemize{
-\item \code{fetch_request_token()} and \code{fetch_web_session()} return strings
+\item \code{fetch_request_token()} and \code{fetch_auth_token()} return strings
 }
 }
 \description{
@@ -51,7 +45,7 @@ for access to user account data through the browser. The token created in
 the first step is provided as part of the user authorization request to
 associate the Application API Key with the user account providing
 authorization.
-\item \code{\link[=fetch_web_session]{fetch_web_session()}} fetches a session token to be used with all
+\item \code{\link[=fetch_auth_token]{fetch_auth_token()}} fetches a session token to be used with all
 end-user requests. This is done by providing the application API key and
 the request token. The endpoint returns an encrypted session token that
 can be attached to all user requests.

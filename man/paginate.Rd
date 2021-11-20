@@ -20,7 +20,7 @@ paginate(method, ..., result_node = NULL, .start_page = 1, .n_pages = NULL)
 all pages are retrieved.}
 }
 \value{
-A list of lastfmr objects
+A list of \link{lastfm} objects
 }
 \description{
 The pagination approach taken here involves constructing successive requests

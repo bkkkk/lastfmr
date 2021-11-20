@@ -16,16 +16,15 @@
 #'      the first step is provided as part of the user authorization request to
 #'      associate the Application API Key with the user account providing
 #'      authorization.
-#' 3.   [fetch_web_session()] fetches a session token to be used with all
+#' 3.   [fetch_auth_token()] fetches a session token to be used with all
 #'      end-user requests. This is done by providing the application API key and
 #'      the request token. The endpoint returns an encrypted session token that
 #'      can be attached to all user requests.
 #'
-#' @param auth_client An lastfm_auth_client object built with [lastfm_auth_client()] function
 #' @param request_token String containing the request token obtained with [fetch_request_token()]
 #'
 #' @returns
-#' * `fetch_request_token()` and `fetch_web_session()` return strings
+#' * `fetch_request_token()` and `fetch_auth_token()` return strings
 #' @name auth
 #'
 #' @aliases NULL
@@ -36,7 +35,9 @@ NULL
 #'
 #' @export
 #' @rdname auth
-lastfm_auth <- function(auth_client = lastfm_auth_client(), .skip_auth = FALSE, .auth = "default") {
+lastfm_auth <- function(.skip_auth = FALSE, .auth = "default") {
+  auth_client <- lastfm_auth_client()
+
   request_token <- fetch_request_token(auth_client)
   if (!.skip_auth) {
     request_user_auth(request_token, auth_client)
@@ -50,7 +51,7 @@ lastfm_auth <- function(auth_client = lastfm_auth_client(), .skip_auth = FALSE, 
 
 #' @rdname auth
 #' @keywords internal
-fetch_request_token <- function(auth_client = lastfm_auth_client()) {
+fetch_request_token <- function(auth_client) {
   query <- list(
     method = "auth.getToken", format = "json"
   )
@@ -65,7 +66,7 @@ fetch_request_token <- function(auth_client = lastfm_auth_client()) {
 
 #' @rdname auth
 #' @keywords internal
-request_user_auth <- function(request_token, auth_client = lastfm_auth_client()) {
+request_user_auth <- function(request_token, auth_client) {
   params <- list(
     api_key = auth_client_api_key(auth_client),
     token = request_token,
@@ -85,7 +86,7 @@ request_user_auth <- function(request_token, auth_client = lastfm_auth_client())
 
 #' @rdname auth
 #' @keywords internal
-fetch_auth_token <- function(request_token, auth_client = lastfm_auth_client()) {
+fetch_auth_token <- function(request_token, auth_client) {
   query <- list(
     method = "auth.getSession",
     token = request_token,

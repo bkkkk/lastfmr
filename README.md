@@ -22,11 +22,37 @@ You can install the development version of lastfmr from
 devtools::install_github("bkkkk/lastfmr")
 ```
 
-## Getting Started
+## Basic usage
 
 ``` r
 library(lastfmr)
+library(tidyverse)
+#> ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.1 ──
+#> ✓ ggplot2 3.3.5     ✓ purrr   0.3.4
+#> ✓ tibble  3.1.6     ✓ dplyr   1.0.7
+#> ✓ tidyr   1.1.4     ✓ stringr 1.4.0
+#> ✓ readr   2.1.0     ✓ forcats 0.5.1
+#> ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+#> x dplyr::filter() masks stats::filter()
+#> x dplyr::lag()    masks stats::lag()
+library(glue)
+library(ggplot2)
+
+lastfmr::chart_get_top_tracks(.n_pages = 10) %>%
+  mutate(
+    label = glue::glue("{name} by {artist}")
+  ) %>%
+  top_n(10, playcount) %>%
+  ggplot(aes(reorder(label, playcount), playcount)) + geom_col() +
+  coord_flip() + labs(
+    y = "Play Count", x = "", title = "BTS hold the Top 5 most played songs on last.fm",
+    subtitle = "Top 10 Songs"
+  )
+#> 
+#> Using limit of 10 pages, starting from 1
 ```
+
+<img src="man/figures/README-unnamed-chunk-2-1.png" width="100%" />
 
 The package provides functions for each of the endpoints and a generic
 API function. For each of the endpoints there are 2 functions:

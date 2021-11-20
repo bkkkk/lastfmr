@@ -8,7 +8,7 @@
 #'
 #' @name single-page-endpoint
 #'
-#' @return A lastfmr API object, see [lastfmr()] for information.
+#' @return A [lastfm] API object.
 NULL
 
 #' Query a Last.FM endpoint.
@@ -18,7 +18,7 @@ NULL
 #' @inherit single-page-endpoint return params
 #'
 #' @export
-lastfmr <- function(method, ..., .page = 1, result_node = NULL) {
+lastfm <- function(method, ..., .page = 1, result_node = NULL) {
   params <- prepare_query(method = method, ..., .page = .page)
 
   request(api_endpoint()) %>%
@@ -41,7 +41,7 @@ parse_lastfm_response <- function(resp, result_node = NULL) {
       data = json_response,
       response = resp
     ),
-    class = "lastfmr"
+    class = "lastfm"
   )
 }
 

@@ -24,15 +24,17 @@
 #'   or not the user has loved each track.
 #' @param recent_tracks (Optional) Whether to include recent tracks fro friends in the response
 #' @param tag The tag you're interested in.
+#' 
 #' @inheritParams match_period
 #' @inheritParams match_tagging_type
 #'
 #' @inherit paginated-endpoint params
+#' @inherit single-page-endpoint params
 #' 
 #' @returns 
 #' 
-#' * [raw_user_get_info()] and [raw_user_get_top_tags()] return a single lastfmr object.
-#' * All other raw functions return a list of lastfmr objects
+#' * [raw_user_get_info()] and [raw_user_get_top_tags()] return a single [lastfm] object.
+#' * All other raw functions return a list of [lastfm] objects
 #' * All tidy functions return a tibble
 #' 
 #' @name user-methods
@@ -186,7 +188,7 @@ raw_user_get_friends <- function(username, recent_tracks = TRUE, .start_page = 1
 #' @rdname user-methods
 #' @export
 raw_user_get_info <- function(username = NULL, .page = 1) {
-  lastfmr(
+  lastfm(
     method = "user.getInfo",
     user = username,
     .page = .page
@@ -226,7 +228,7 @@ raw_user_get_personal_tags <- function(username, tag, tagging_type, .start_page 
 #' @rdname user-methods
 #' @export
 raw_user_get_top_tags <- function(username, .page = 1) {
-  lastfmr(
+  lastfm(
     method = "user.getTopTags",
     result_node = "toptags",
     user = username,

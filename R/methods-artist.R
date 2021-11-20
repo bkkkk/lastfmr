@@ -25,8 +25,8 @@
 #'
 #' @returns
 #'
-#' * [raw_artist_search()], [raw_artist_get_top_albums()], and [raw_artist_get_top_tracks()] return a list of lastfmr object.
-#' * [raw_artist_get_info()], [raw_artist_get_similar()], and [raw_artist_get_tags()] return a single lastfmr object.
+#' * [raw_artist_search()], [raw_artist_get_top_albums()], and [raw_artist_get_top_tracks()] return a list of lastfm object.
+#' * [raw_artist_get_info()], [raw_artist_get_similar()], and [raw_artist_get_tags()] return a single lastfm object.
 #'
 #' @name artist-methods
 NULL
@@ -35,11 +35,11 @@ sanitize_artist_search_parameters <- function(artist = NULL, mbid = NULL) {
   missing_artist <- is.null(artist)
   missing_mbid <- is.null(mbid)
   if (missing_artist && missing_mbid) {
-    abort("You must provide `artist` or `mbid`.")
+    cli_abort("You must provide `artist` or `mbid`.")
   }
 
   if (!xor(missing_artist, missing_mbid)) {
-    warn("You must only one `artist` or `mbid`. Both are set, defaulting to `artist`")
+    cli_warn("You must only one `artist` or `mbid`. Both are set, defaulting to `artist`")
     mbid <- NULL
   }
 
@@ -63,7 +63,7 @@ raw_artist_search <- function(artist, .start_page = 1, .n_pages = NULL) {
 raw_artist_get_info <- function(artist = NULL, mbid = NULL, autocorrect = TRUE, username = NULL, lang = NULL) {
   params <- sanitize_artist_search_parameters(artist, mbid)
 
-  lastfmr(
+  lastfm(
     method = "artist.getInfo",
     result_node = "artist",
     artist = params[["artist"]],
@@ -78,7 +78,7 @@ raw_artist_get_info <- function(artist = NULL, mbid = NULL, autocorrect = TRUE, 
 #' @export
 raw_artist_get_similar <- function(artist = NULL, mbid = NULL, autocorrect = TRUE) {
   params <- sanitize_artist_search_parameters(artist, mbid)
-  lastfmr(
+  lastfm(
     method = "artist.getSimilar",
     result_node = "similarartists",
     artist = params[["artist"]],
@@ -91,7 +91,7 @@ raw_artist_get_similar <- function(artist = NULL, mbid = NULL, autocorrect = TRU
 #' @export
 raw_artist_get_tags <- function(artist = NULL, mbid = NULL, autocorrect = TRUE, username = NULL) {
   params <- sanitize_artist_search_parameters(artist, mbid)
-  lastfmr(
+  lastfm(
     method = "artist.getTags",
     artist = params[["artist"]],
     mbid = params[["mbid"]],

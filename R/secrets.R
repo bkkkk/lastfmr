@@ -19,7 +19,6 @@ get_session_key <- function() {
   }
 }
 
-#' @export
 SessionKey <- function(resp) {
   structure(
     list(
@@ -31,11 +30,10 @@ SessionKey <- function(resp) {
 }
 
 #' @export
-print.fm_session_key <- function(x) {
+print.fm_session_key <- function(x, ...) {
   cat(glue("Key for account: {x$account_name}"))
 }
 
-#' @export
 Obfuscated <- function(x) {
   structure(
     list(value = x),
@@ -43,7 +41,6 @@ Obfuscated <- function(x) {
   )
 }
 
-#' @export
 deobfuscate <- function(x) {
   if (inherits(x, "obfuscated")) {
     x[["value"]]
@@ -53,11 +50,11 @@ deobfuscate <- function(x) {
 }
 
 #' @export
-print.obfuscated <- function(x) {
+print.obfuscated <- function(x, ...) {
   cat("<OBFUSCATED>", sep = "\n")
 }
 
 #' @export
-str.obfuscated <- function(x, ...) {
+str.obfuscated <- function(object, ...) {
   cat("<OBFUSCATED>", sep = "\n")
 }
