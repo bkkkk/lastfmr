@@ -50,6 +50,44 @@ raw_chart_get_top_tags <- function(.start_page = 1, .n_pages = NULL) {
 
 #' @rdname chart-methods
 #' @export
+chart_get_top_tags <- function(.start_page = 1, .n_pages = NULL) {
+  raw_responses <- raw_chart_get_top_tags(.start_page, .n_pages)
+  
+  tidy_raw_response(raw_responses, function(record) {
+    tibble(
+      name = map_chr(record, "name"),
+      reach = as.integer(map_chr(record, "reach")),
+      taggings = as.integer(map_chr(record, "taggings")),
+      streamable = as.logical(as.integer(map_chr(record, "streamable"))),
+      url = map_chr(record, "url")
+    )
+  }, .path = "tag") %>%
+    arrange(desc(taggings))
+}
+
+
+#' @rdname chart-methods
+#' @export
 raw_chart_get_top_tracks <- function(.start_page = 1, .n_pages = NULL) {
   paginate(method = "chart.getTopTracks", result_node = "tracks", .start_page = .start_page, .n_pages = .n_pages)
+}
+
+
+#' @rdname chart-methods
+#' @export
+chart_get_top_tracks <- function(.start_page = 1, .n_pages = NULL) {
+  raw_responses <- raw_chart_get_top_tracks(.start_page, .n_pages)
+  
+  tidy_raw_response(raw_responses, function(record) {
+    tibble(
+      name = map_chr(record, "name"),
+      artist = map_chr(record, c("artist", "name")),
+      playcount = as.integer(map_chr(record, "playcount")),
+      listeners = as.integer(map_chr(record, "listeners")),
+      mbid = map_chr(record, "mbid"),
+      streamable = as.logical(as.integer(map_chr(record, c("streamable", "#text")))),
+      url = map_chr(record, "url")
+    )
+  }, .path = "track") %>%
+    arrange(desc(playcount))
 }

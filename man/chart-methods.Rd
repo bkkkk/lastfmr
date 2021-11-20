@@ -5,7 +5,9 @@
 \alias{raw_chart_get_top_artists}
 \alias{chart_get_top_artists}
 \alias{raw_chart_get_top_tags}
+\alias{chart_get_top_tags}
 \alias{raw_chart_get_top_tracks}
+\alias{chart_get_top_tracks}
 \title{Chart Methods}
 \usage{
 raw_chart_get_top_artists(.start_page = 1, .n_pages = NULL)
@@ -14,7 +16,11 @@ chart_get_top_artists(.start_page = 1, .n_pages = NULL)
 
 raw_chart_get_top_tags(.start_page = 1, .n_pages = NULL)
 
+chart_get_top_tags(.start_page = 1, .n_pages = NULL)
+
 raw_chart_get_top_tracks(.start_page = 1, .n_pages = NULL)
+
+chart_get_top_tracks(.start_page = 1, .n_pages = NULL)
 }
 \arguments{
 \item{.start_page}{The page to start pulling from, by default starts from the
