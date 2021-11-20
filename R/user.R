@@ -8,7 +8,12 @@
 #' * [raw_user_get_recent_tracks()] retrieve a list of recent tracks scrobbled by the user.
 #' * [raw_user_get_top_albums()], [raw_user_get_top_artists()],
 #'   and [raw_user_get_top_tracks()] retrieve lists of top albums, artists,
-#'   and tracks respectively played by the user.
+#'   and tracks, respectively, played by the user.
+#' * [raw_user_get_friends()] retrieves a list of user friends.
+#' * [raw_user_get_info()] retrieves information about the user.
+#' * [raw_user_get_loved_tracks()] gets a list of loved tracks by the user.
+#' * [raw_user_get_personal_tags()] gets a list of the user's personal tags.
+#' * [raw_user_get_top_tags()] get a list of top objects tagged by the user.
 #' 
 #' @param username The username as a string
 #' @param from (Optional) Beginning timestamp of a range - only display
@@ -23,6 +28,12 @@
 #' @inheritParams match_tagging_type
 #'
 #' @inherit paginated-endpoint params
+#' 
+#' @returns 
+#' 
+#' * [raw_user_get_info()] and [raw_user_get_top_tags()] return a single lastfmr object.
+#' * All other raw functions return a list of lastfmr objects
+#' * All tidy functions return a tibble
 #' 
 #' @name user-methods
 NULL

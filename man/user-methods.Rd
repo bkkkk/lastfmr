@@ -125,6 +125,13 @@ One of overall, 7day, 1month, 3month, 6month, 12month. \verb{7day} by default.}
 
 \item{tagging_type}{The objects on which the tags were applied as a string}
 }
+\value{
+\itemize{
+\item \code{\link[=raw_user_get_info]{raw_user_get_info()}} and \code{\link[=raw_user_get_top_tags]{raw_user_get_top_tags()}} return a single lastfmr object.
+\item All other raw functions return a list of lastfmr objects
+\item All tidy functions return a tibble
+}
+}
 \description{
 These functions retrieve information about Last.fm users. Users are identified
 by \code{username}:
@@ -132,7 +139,12 @@ by \code{username}:
 \item \code{\link[=raw_user_get_recent_tracks]{raw_user_get_recent_tracks()}} retrieve a list of recent tracks scrobbled by the user.
 \item \code{\link[=raw_user_get_top_albums]{raw_user_get_top_albums()}}, \code{\link[=raw_user_get_top_artists]{raw_user_get_top_artists()}},
 and \code{\link[=raw_user_get_top_tracks]{raw_user_get_top_tracks()}} retrieve lists of top albums, artists,
-and tracks respectively played by the user.
+and tracks, respectively, played by the user.
+\item \code{\link[=raw_user_get_friends]{raw_user_get_friends()}} retrieves a list of user friends.
+\item \code{\link[=raw_user_get_info]{raw_user_get_info()}} retrieves information about the user.
+\item \code{\link[=raw_user_get_loved_tracks]{raw_user_get_loved_tracks()}} gets a list of loved tracks by the user.
+\item \code{\link[=raw_user_get_personal_tags]{raw_user_get_personal_tags()}} gets a list of the user's personal tags.
+\item \code{\link[=raw_user_get_top_tags]{raw_user_get_top_tags()}} get a list of top objects tagged by the user.
 }
 }
 \concept{raw user functions}
