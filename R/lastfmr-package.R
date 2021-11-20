@@ -2,6 +2,8 @@
 "_PACKAGE"
 
 ## usethis namespace: start
+#' @importFrom dplyr arrange
+#' @importFrom dplyr distinct
 #' @importFrom glue glue
 #' @importFrom httr BROWSE
 #' @importFrom httr content
@@ -20,6 +22,7 @@
 #' @importFrom purrr map
 #' @importFrom purrr map_chr
 #' @importFrom purrr map_dbl
+#' @importFrom purrr map_df
 #' @importFrom rlang %||%
 #' @importFrom rlang abort
 #' @importFrom rlang arg_match

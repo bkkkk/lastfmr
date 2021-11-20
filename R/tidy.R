@@ -14,7 +14,7 @@ tidy_raw_response <- function(.x, .tidy, .path = "data") {
   } else {
     pluck_data(.x, .path)
   }
-  map_df(.result, .tidy)
+  distinct(map_df(.result, .tidy))
 }
 
 pluck_data <- function(.x, .path) {

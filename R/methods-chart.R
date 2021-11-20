@@ -31,13 +31,14 @@ chart_get_top_artists <- function(.start_page = 1, .n_pages = NULL) {
   tidy_raw_response(raw_responses, function(record) {
     tibble(
       name = map_chr(record, "name"),
-      playcount = map_chr(record, "playcount"),
-      listeners = map_chr(record, "listeners"),
+      playcount = as.integer(map_chr(record, "playcount")),
+      listeners = as.integer(map_chr(record, "listeners")),
       mbid = map_chr(record, "mbid"),
       streamable = as.integer(map_chr(record, "streamable")),
       url = map_chr(record, "url")
     )
-  }, .path = "artist")
+  }, .path = "artist") %>%
+    arrange(desc(playcount))
 }
 
 
