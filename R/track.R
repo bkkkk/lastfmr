@@ -62,13 +62,13 @@ track_search <- function(track, artist = NULL, .start_page = 1, .n_pages = NULL)
 #' argument which accepts an [ISO 639-1 country code](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes).
 #'
 #' @inherit single-page-endpoint return
+#' @inherit common-params params
+#' @inheritSection common-params Language Setting
 #'
 #' @param track Required unless mbid is provided. The track name as a string.
 #' @param artist Required unless mbid is provided. The artist name as a string.
 #' @param mbid (Optional) MusicBrainz ID for the track as a string. Can be provided instead of artist and track names
-#' @param autocorrect (Optional) Whether to correct the artist and track names. Defaults to TRUE if not provided.
 #' @param username (Optional) Username as a string
-#' @param lang (Optional) The language to return the biography in.
 #'
 #' @export
 raw_track_get_info <- function(track = NULL, artist = NULL, mbid = NULL, autocorrect = TRUE, username = NULL, lang = NULL) {
@@ -97,20 +97,14 @@ raw_track_get_info <- function(track = NULL, artist = NULL, mbid = NULL, autocor
 #' One and only one of the above must be provided. If both are provided this
 #' defaults to using the artist and track name.
 #'
-#' If the artist and track names provided are misspelled in the search query, this endpoint
-#' returns the correct name by default. This can be overriden by calling the function
-#' with function argument `autocorrect` set to `FALSE`.
-#'
-#' The biography language is English by default but can be changed using the `lang`
-#' argument which accepts an [ISO 639-1 country code](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes).
-#' 
 #' @inherit single-page-endpoint return
+#' @inherit common-params params
+#' @inheritSection common-params Language Setting
+#' @inheritSection common-params Name Autocorrection
 #' 
 #' @param track Required unless mbid is provided. The track name as a string.
 #' @param artist Required unless mbid is provided. The artist name as a string.
 #' @param mbid (Optional) MusicBrainz ID for the track as a string. Can be provided instead of artist and track names
-#' @param autocorrect (Optional) Whether to correct the artist and track names. Defaults to TRUE if not provided.
-#' @param lang (Optional) The language to return the biography in.
 #'
 #' @export
 raw_track_get_similar <- function(track = NULL, artist = NULL, mbid = NULL, autocorrect = TRUE, lang = NULL) {

@@ -19,9 +19,9 @@ raw_track_get_similar(
 
 \item{mbid}{(Optional) MusicBrainz ID for the track as a string. Can be provided instead of artist and track names}
 
-\item{autocorrect}{(Optional) Whether to correct the artist and track names. Defaults to TRUE if not provided.}
+\item{autocorrect}{(Optional) Whether to correct the artist/album/track name names provided in the response. Defaults to TRUE if not provided.}
 
-\item{lang}{(Optional) The language to return the biography in.}
+\item{lang}{(Optional) The biography language.}
 }
 \value{
 A lastfmr API object, see \code{\link[=lastfmr]{lastfmr()}} for information.
@@ -36,11 +36,20 @@ The search is performed by providing a source track by:
 
 One and only one of the above must be provided. If both are provided this
 defaults to using the artist and track name.
-
-If the artist and track names provided are misspelled in the search query, this endpoint
-returns the correct name by default. This can be overriden by calling the function
-with function argument \code{autocorrect} set to \code{FALSE}.
-
-The biography language is English by default but can be changed using the \code{lang}
-argument which accepts an \href{https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes}{ISO 639-1 country code}.
 }
+\section{Language Setting}{
+
+
+Biographies for albums and artists are returned in English by
+default. To get the biography in other languages, provide a \href{https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes}{ISO 639-1 country code}
+via the \code{lang} argument of supporting functions.
+}
+
+\section{Name Autocorrection}{
+
+
+Endpoints that take artist/track/album names try to auto-correct misspelled names
+in the search query. This behaviour can be overriden by calling the function
+with argument \code{autocorrect} set to \code{FALSE}.
+}
+

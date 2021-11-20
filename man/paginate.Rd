@@ -2,21 +2,21 @@
 % Please edit documentation in R/pagination.R
 \name{paginate}
 \alias{paginate}
-\title{A generic paginated request}
+\title{Make a generic paginated request}
 \usage{
 paginate(method, ..., result_node = NULL, .start_page = 1, .n_pages = NULL)
 }
 \arguments{
-\item{method}{a string}
+\item{method}{The name of the API method \href{https://www.last.fm/api}{found here}.}
 
 \item{...}{Endpoint parameters to pass to the API endpoint}
 
-\item{result_node}{a string}
+\item{result_node}{The node in the response that contains the data.}
 
-\item{.start_page}{the page to start pulling from, by default starts from the
+\item{.start_page}{The page to start pulling from, by default starts from the
 1st page}
 
-\item{.n_pages}{the total number of pages to pull. If no value is provided,
+\item{.n_pages}{The total number of pages to pull. If no value is provided,
 all pages are retrieved.}
 }
 \value{

@@ -29,16 +29,14 @@ raw_album_search <- function(album, .start_page = 1, .n_pages = NULL) {
 #' with function argument `autocorrect` set to `FALSE`.
 #' 
 #' Album play count is added to the result if the `username` argument is provided.
-#' 
-#' The biography language is English by default but can be changed using the `lang`
-#' argument which accepts an [ISO 639-1 country code](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes).
 #'
+#' @inherit common-params params
+#' @inheritSection common-params Language Setting
+#' 
 #' @param artist Required unless mbid is provided. The artist name as a string.
 #' @param album Required unless mbid is provided. The album name as a string.
 #' @param mbid (Optional) MusicBrainz ID for the album as a string. Can be provided instead of artist and album names
-#' @param autocorrect (Optional) Whether to correct the artist name. Defaults to TRUE if not provided.
 #' @param username (Optional) Username as a string
-#' @param lang (Optional) The language to return the biography in.
 #'
 #' @return A vector of LastFM API objects
 #' @export
@@ -57,6 +55,7 @@ raw_album_get_info <- function(artist = NULL, album = NULL, mbid = NULL, autocor
   )
 }
 
+#' @keywords internal
 sanitize_raw_album_get_info_parameters <- function(artist = NULL, album = NULL, mbid = NULL) {
   if (is.null(artist) && is.null(album) && is.null(mbid)) {
     abort("`raw_album_get_info` expects to get either an artist and album or the mbid. None were provided.")

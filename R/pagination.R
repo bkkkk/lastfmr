@@ -1,14 +1,14 @@
-#' Documenting a generic paginated endpoint
+#' Documentation for a paginated endpoints
 #' 
-#' @param .start_page the page to start pulling from, by default starts from the
+#' @param .start_page The page to start pulling from, by default starts from the
 #'   1st page
-#' @param .n_pages the total number of pages to pull. If no value is provided,
+#' @param .n_pages The total number of pages to pull. If no value is provided,
 #'   all pages are retrieved.
 #'
 #' @name paginated-endpoint
 NULL
- 
-#' A generic paginated request
+
+#' Make a generic paginated request
 #' 
 #' The pagination approach taken here involves constructing successive requests
 #' from an initial response. This initial response represents the first page in
@@ -79,6 +79,8 @@ paginate <- function(method, ..., result_node = NULL, .start_page = 1, .n_pages 
 #' * [has_next_page()] returns a boolean
 #' * [get_next_page()] returns a `lastfmr` object
 #' 
+#' @keywords internal
+#' 
 #' @name pagination_helper
 NULL
 
@@ -92,6 +94,7 @@ get_current_page <- function(resp) {
 }
 
 #' @rdname pagination_helper
+#' @keywords internal
 get_total_pages <- function(resp) {
   as.integer(get_response_attr(resp)$totalPages)
 }
@@ -104,6 +107,7 @@ has_next_page <- function(resp) {
   current_page + 1 <= last_page
 }
 
+#' @rdname pagination_helper
 get_response_attr <- function(resp) {
   response_data <- resp$data
   if (!is.null(response_data[["opensearch:totalResults"]])) {
@@ -111,7 +115,7 @@ get_response_attr <- function(resp) {
     total_items = as.integer(response_data[["opensearch:totalResults"]])
 
     return (list(
-      totalPages = total_pages(total_items, items_per_page),
+      totalPages = get_pages_from_items(total_items, items_per_page),
       page = as.integer(response_data[["opensearch:Query"]][["startPage"]])
     ))
   } else {
@@ -119,6 +123,6 @@ get_response_attr <- function(resp) {
   }
 }
 
-total_pages <- function(total_items, items_per_page) {
+get_pages_from_items <- function(total_items, items_per_page) {
   return (trunc(total_items / items_per_page) + (total_items %% items_per_page > 0))
 }

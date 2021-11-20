@@ -2,8 +2,8 @@
 #' 
 #' @description Used for documenting single-query endpoints
 #' 
-#' @param method a string
-#' @param result_node a string
+#' @param method The name of the API method [found here](https://www.last.fm/api).
+#' @param result_node The node in the response that contains the data.
 #' @param .page Page to query, by default query the first page
 #'   
 #' @name single-page-endpoint

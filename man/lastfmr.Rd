@@ -7,13 +7,13 @@
 lastfmr(method, ..., .page = 1, result_node = NULL)
 }
 \arguments{
-\item{method}{a string}
+\item{method}{The name of the API method \href{https://www.last.fm/api}{found here}.}
 
 \item{...}{named parameters to be passed to the endpoint}
 
 \item{.page}{Page to query, by default query the first page}
 
-\item{result_node}{a string}
+\item{result_node}{The node in the response that contains the data.}
 }
 \value{
 A lastfmr API object, see \code{\link[=lastfmr]{lastfmr()}} for information.

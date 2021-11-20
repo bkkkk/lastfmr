@@ -5,6 +5,7 @@
 \alias{get_current_page}
 \alias{get_total_pages}
 \alias{has_next_page}
+\alias{get_response_attr}
 \title{Pagination Management}
 \usage{
 get_current_page(resp)
@@ -12,6 +13,8 @@ get_current_page(resp)
 get_total_pages(resp)
 
 has_next_page(resp)
+
+get_response_attr(resp)
 }
 \arguments{
 \item{resp}{lastfmr response object}
@@ -39,3 +42,4 @@ response and the total number of pages available, respectively.
 \item \code{\link[=has_next_page]{has_next_page()}} checks if there are more pages after the current page.
 }
 }
+\keyword{internal}

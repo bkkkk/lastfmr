@@ -20,11 +20,11 @@ raw_album_get_info(
 
 \item{mbid}{(Optional) MusicBrainz ID for the album as a string. Can be provided instead of artist and album names}
 
-\item{autocorrect}{(Optional) Whether to correct the artist name. Defaults to TRUE if not provided.}
+\item{autocorrect}{(Optional) Whether to correct the artist/album/track name names provided in the response. Defaults to TRUE if not provided.}
 
 \item{username}{(Optional) Username as a string}
 
-\item{lang}{(Optional) The language to return the biography in.}
+\item{lang}{(Optional) The biography language.}
 }
 \value{
 A vector of LastFM API objects
@@ -43,7 +43,12 @@ returns the correct name by default. This can be overriden by calling the functi
 with function argument \code{autocorrect} set to \code{FALSE}.
 
 Album play count is added to the result if the \code{username} argument is provided.
-
-The biography language is English by default but can be changed using the \code{lang}
-argument which accepts an \href{https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes}{ISO 639-1 country code}.
 }
+\section{Language Setting}{
+
+
+Biographies for albums and artists are returned in English by
+default. To get the biography in other languages, provide a \href{https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes}{ISO 639-1 country code}
+via the \code{lang} argument of supporting functions.
+}
+

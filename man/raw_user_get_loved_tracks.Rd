@@ -9,10 +9,10 @@ raw_user_get_loved_tracks(username, .start_page = 1, .n_pages = NULL)
 \arguments{
 \item{username}{The username as a string}
 
-\item{.start_page}{the page to start pulling from, by default starts from the
+\item{.start_page}{The page to start pulling from, by default starts from the
 1st page}
 
-\item{.n_pages}{the total number of pages to pull. If no value is provided,
+\item{.n_pages}{The total number of pages to pull. If no value is provided,
 all pages are retrieved.}
 }
 \description{

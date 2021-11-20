@@ -4,9 +4,9 @@
 \alias{single-page-endpoint}
 \title{Last.FM querying endpoint}
 \arguments{
-\item{method}{a string}
+\item{method}{The name of the API method \href{https://www.last.fm/api}{found here}.}
 
-\item{result_node}{a string}
+\item{result_node}{The node in the response that contains the data.}
 
 \item{.page}{Page to query, by default query the first page}
 }

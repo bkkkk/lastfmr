@@ -30,3 +30,23 @@ NULL
 
 # Used to track package-wide objects
 .state <- new.env(parent = emptyenv())
+
+#' Common parameters in API methods
+#' 
+#' @section Language Setting:
+#' 
+#' Biographies for albums and artists are returned in English by
+#' default. To get the biography in other languages, provide a [ISO 639-1 country code](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) 
+#' via the `lang` argument of supporting functions.
+#' 
+#' @section Name Autocorrection:
+#' 
+#' Endpoints that take artist/track/album names try to auto-correct misspelled names
+#' in the search query. This behaviour can be overriden by calling the function
+#' with argument `autocorrect` set to `FALSE`.
+#' 
+#' @param lang (Optional) The biography language.
+#' @param autocorrect (Optional) Whether to correct the artist/album/track name names provided in the response. Defaults to TRUE if not provided.
+#' 
+#' @name common-params
+NULL
