@@ -31,8 +31,8 @@
 #' 
 #' @returns 
 #' 
-#' * [raw_user_get_info()] and [raw_user_get_top_tags()] return a single lastfm object.
-#' * All other raw functions return a list of lastfm objects
+#' * [raw_user_get_info()] and [raw_user_get_top_tags()] return a single [lastfm] object.
+#' * All other raw functions return a list of [lastfm] objects
 #' * All tidy functions return a tibble
 #' 
 #' @name user-methods

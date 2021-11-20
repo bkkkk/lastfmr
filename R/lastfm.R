@@ -8,7 +8,7 @@
 #'
 #' @name single-page-endpoint
 #'
-#' @return A lastfm API object, see [lastfm()] for information.
+#' @return A [lastfm] API object.
 NULL
 
 #' Query a Last.FM endpoint.

@@ -20,8 +20,8 @@
 #'
 #' @returns
 #'
-#' * [raw_album_search()] returns a list of lastfm objects
-#' * [raw_album_get_info()] returns a single lastfm object
+#' * [raw_album_search()] returns a list of [lastfm] objects
+#' * [raw_album_get_info()] returns a single [lastfm] object
 #'
 #' @name album-methods
 NULL

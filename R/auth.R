@@ -21,7 +21,7 @@
 #'      the request token. The endpoint returns an encrypted session token that
 #'      can be attached to all user requests.
 #'
-#' @param auth_client An lastfm_auth_client object built with [lastfm_auth_client()] function
+#' @param auth_client An [lastfm_auth_client] object built with [lastfm_auth_client()] function
 #' @param request_token String containing the request token obtained with [fetch_request_token()]
 #'
 #' @returns
