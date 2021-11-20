@@ -4,6 +4,8 @@
 # lastfmr
 
 <!-- badges: start -->
+
+[![R-CMD-check](https://github.com/bkkkk/lastfmr/workflows/R-CMD-check/badge.svg)](https://github.com/bkkkk/lastfmr/actions)
 <!-- badges: end -->
 
 The goal of lastfmr is to simplify the work of interacting with the
