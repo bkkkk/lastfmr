@@ -35,7 +35,6 @@ print.fm_session_key <- function(x) {
   cat(glue("Key for account: {x$account_name}"))
 }
 
-#' @export
 Obfuscated <- function(x) {
   structure(
     list(value = x),
@@ -43,7 +42,6 @@ Obfuscated <- function(x) {
   )
 }
 
-#' @export
 deobfuscate <- function(x) {
   if (inherits(x, "obfuscated")) {
     x[["value"]]
