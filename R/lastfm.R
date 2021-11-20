@@ -8,7 +8,7 @@
 #'
 #' @name single-page-endpoint
 #'
-#' @return A lastfmr API object, see [lastfm()] for information.
+#' @return A lastfm API object, see [lastfm()] for information.
 NULL
 
 #' Query a Last.FM endpoint.
@@ -41,7 +41,7 @@ parse_lastfm_response <- function(resp, result_node = NULL) {
       data = json_response,
       response = resp
     ),
-    class = "lastfmr"
+    class = "lastfm"
   )
 }
 

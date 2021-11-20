@@ -25,8 +25,8 @@
 #'
 #' @returns
 #'
-#' * [raw_artist_search()], [raw_artist_get_top_albums()], and [raw_artist_get_top_tracks()] return a list of lastfmr object.
-#' * [raw_artist_get_info()], [raw_artist_get_similar()], and [raw_artist_get_tags()] return a single lastfmr object.
+#' * [raw_artist_search()], [raw_artist_get_top_albums()], and [raw_artist_get_top_tracks()] return a list of lastfm object.
+#' * [raw_artist_get_info()], [raw_artist_get_similar()], and [raw_artist_get_tags()] return a single lastfm object.
 #'
 #' @name artist-methods
 NULL

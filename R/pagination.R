@@ -19,7 +19,7 @@ NULL
 #' @inheritParams paginated-endpoint
 #' @inheritParams single-page-endpoint
 #'
-#' @return A list of lastfmr objects
+#' @return A list of [lastfm] objects
 #' @export
 paginate <- function(method, ..., result_node = NULL, .start_page = 1, .n_pages = NULL) {
   out <- vector("list", length = ifelse(is.null(.n_pages), 10, .n_pages))
@@ -70,12 +70,12 @@ paginate <- function(method, ..., result_node = NULL, .start_page = 1, .n_pages 
 #' response and the total number of pages available, respectively.
 #' * [has_next_page()] checks if there are more pages after the current page.
 #'
-#' @param resp lastfmr response object
+#' @param resp lastfm object
 #'
 #' @returns
 #' * [get_current_page()] returns an integer
 #' * [has_next_page()] returns a boolean
-#' * [get_next_page()] returns a `lastfmr` object
+#' * [get_next_page()] returns a [lastfm] object
 #'
 #' @keywords internal
 #'

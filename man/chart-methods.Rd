@@ -31,7 +31,7 @@ all pages are retrieved.}
 }
 \value{
 \itemize{
-\item All raw endpoints return a list of lastfmr objects.
+\item All raw endpoints return a list of lastfm objects.
 \item All tidy endpoints return a Tibble.
 }
 }

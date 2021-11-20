@@ -66,8 +66,8 @@ user is included in the response}
 }
 \value{
 \itemize{
-\item \code{\link[=raw_artist_search]{raw_artist_search()}}, \code{\link[=raw_artist_get_top_albums]{raw_artist_get_top_albums()}}, and \code{\link[=raw_artist_get_top_tracks]{raw_artist_get_top_tracks()}} return a list of lastfmr object.
-\item \code{\link[=raw_artist_get_info]{raw_artist_get_info()}}, \code{\link[=raw_artist_get_similar]{raw_artist_get_similar()}}, and \code{\link[=raw_artist_get_tags]{raw_artist_get_tags()}} return a single lastfmr object.
+\item \code{\link[=raw_artist_search]{raw_artist_search()}}, \code{\link[=raw_artist_get_top_albums]{raw_artist_get_top_albums()}}, and \code{\link[=raw_artist_get_top_tracks]{raw_artist_get_top_tracks()}} return a list of lastfm object.
+\item \code{\link[=raw_artist_get_info]{raw_artist_get_info()}}, \code{\link[=raw_artist_get_similar]{raw_artist_get_similar()}}, and \code{\link[=raw_artist_get_tags]{raw_artist_get_tags()}} return a single lastfm object.
 }
 }
 \description{

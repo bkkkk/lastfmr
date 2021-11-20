@@ -16,7 +16,7 @@ lastfm(method, ..., .page = 1, result_node = NULL)
 \item{result_node}{The node in the response that contains the data.}
 }
 \value{
-A lastfmr API object, see \code{\link[=lastfm]{lastfm()}} for information.
+A lastfm API object, see \code{\link[=lastfm]{lastfm()}} for information.
 }
 \description{
 Query a Last.FM endpoint.
