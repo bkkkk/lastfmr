@@ -1,13 +1,13 @@
 #' Simple caching mechanism for auth secrets
-#' 
+#'
 #' Caching of authorization secrets relies on a simple rds file save/load mechanism.
-#' 
+#'
 #' Users primarily interact with the [auth_as()] function to set the authentication
 #' secrets for the session. Authentication identities are managed by the name `auth`.
 #'
 #' @param auth the authentication token as a string
 #' @param name the name of the cache as a string
-#' 
+#'
 #' @name auth_cache
 NULL
 

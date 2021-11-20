@@ -1,5 +1,5 @@
 #' Search for a track by track name
-#' 
+#'
 #' Returns track matches sorted by relevance.
 #'
 #' @inherit paginated-endpoint params return
@@ -21,7 +21,7 @@ raw_track_search <- function(track, artist = NULL, .start_page = 1, .n_pages = N
 }
 
 #' Search for a track by track name.
-#' 
+#'
 #' Returns track matches sorted by relevance as a tidy tibble.
 #'
 #' @inheritParams raw_track_search
@@ -90,7 +90,7 @@ raw_track_get_info <- function(track = NULL, artist = NULL, mbid = NULL, autocor
 #' Search for similar tracks
 #'
 #' The search is performed by providing a source track by:
-#' 
+#'
 #'     1. Artist and track name OR
 #'     2. MusicBrainz ID
 #'
@@ -101,7 +101,7 @@ raw_track_get_info <- function(track = NULL, artist = NULL, mbid = NULL, autocor
 #' @inherit common-params params
 #' @inheritSection common-params Language Setting
 #' @inheritSection common-params Name Autocorrection
-#' 
+#'
 #' @param track Required unless mbid is provided. The track name as a string.
 #' @param artist Required unless mbid is provided. The artist name as a string.
 #' @param mbid (Optional) MusicBrainz ID for the track as a string. Can be provided instead of artist and track names
@@ -115,7 +115,7 @@ raw_track_get_similar <- function(track = NULL, artist = NULL, mbid = NULL, auto
     result_node = "similartracks",
     artist = params[["artist"]],
     track = params[["track"]],
-    mbid = params[["mbid"]], 
+    mbid = params[["mbid"]],
     autocorrect = autocorrect,
     lang = lang
   )

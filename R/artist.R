@@ -1,7 +1,7 @@
 #' Artist API Methods
-#' 
-#' @description 
-#' 
+#'
+#' @description
+#'
 #' These endpoints return information about artists. Identifying artists can be
 #' done either using the artist name or a MusicBrainzID. If both `artist` and
 #' `mbid` are provided, the artist name is used by default.
@@ -23,8 +23,8 @@
 #' @inheritSection common-params Language Setting
 #' @inheritSection common-params Name Autocorrection
 #'
-#' @returns 
-#' 
+#' @returns
+#'
 #' * [raw_artist_search()], [raw_artist_get_top_albums()], and [raw_artist_get_top_tracks()] return a list of lastfmr object.
 #' * [raw_artist_get_info()], [raw_artist_get_similar()], and [raw_artist_get_tags()] return a single lastfmr object.
 #'
@@ -37,13 +37,13 @@ sanitize_artist_search_parameters <- function(artist = NULL, mbid = NULL) {
   if (missing_artist && missing_mbid) {
     abort("You must provide `artist` or `mbid`.")
   }
-  
+
   if (!xor(missing_artist, missing_mbid)) {
     warn("You must only one `artist` or `mbid`. Both are set, defaulting to `artist`")
     mbid <- NULL
   }
-  
-  list(artist=artist, mbid=mbid)
+
+  list(artist = artist, mbid = mbid)
 }
 
 #' @rdname artist-methods
@@ -62,7 +62,7 @@ raw_artist_search <- function(artist, .start_page = 1, .n_pages = NULL) {
 #' @export
 raw_artist_get_info <- function(artist = NULL, mbid = NULL, autocorrect = TRUE, username = NULL, lang = NULL) {
   params <- sanitize_artist_search_parameters(artist, mbid)
-  
+
   lastfmr(
     method = "artist.getInfo",
     result_node = "artist",

@@ -24,7 +24,7 @@ print.lastfm_auth_client <- function(x) {
 
 auth_client_api_key <- function(auth_client) {
   stopifnot(is_lastfm_auth_client(auth_client))
-  
+
   auth_client$api_key
 }
 

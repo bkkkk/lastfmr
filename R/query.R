@@ -1,5 +1,5 @@
 #' Query management
-#' 
+#'
 #' @name query
 
 prepare_query <- function(method, ..., .page) {

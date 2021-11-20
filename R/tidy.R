@@ -1,9 +1,9 @@
 #' Raw response tidying
-#' 
+#'
 #' @description Used for documenting tidying functions
-#' 
+#'
 #' @name tidy-function
-#' 
+#'
 #' @return A tibble
 NULL
 
