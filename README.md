@@ -48,3 +48,9 @@ Below is a summary of endpoint support:
 | user.getLovedTracks  | :heavy_check_mark: | :x:                |
 | user.getPersonalTags | :heavy_check_mark: | :x:                |
 | user.getTopTags      | :heavy_check_mark: | :x:                |
+| artist.getInfo       | :heavy_check_mark: | :x:                |
+| artist.getSimilar    | :heavy_check_mark: | :x:                |
+| artist.getTags       | :heavy_check_mark: | :x:                |
+| artist.getTopAlbums  | :heavy_check_mark: | :x:                |
+| artist.getTopTracks  | :heavy_check_mark: | :x:                |
+| artist.search        | :heavy_check_mark: | :x:                |
