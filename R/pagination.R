@@ -25,11 +25,9 @@ paginate <- function(method, ..., result_node = NULL, .start_page = 1, .n_pages 
   out <- vector("list", length = ifelse(is.null(.n_pages), 10, .n_pages))
   i <- 1L
 
-  log_info("Reading paginated endpoint {method}")
-
   .n_pages <- ifelse(is.null(.n_pages), 5000, .n_pages)
 
-  log_info("Using limit of {.n_pages} pages, starting from {.start_page}")
+  cli::cli_inform("Using limit of {.n_pages} pages, starting from {.start_page}")
 
   pb <- progress::progress_bar$new(format = "Downloading multiple pages :bar", total = .n_pages)
   withr::defer(pb$terminate())

@@ -58,7 +58,7 @@ auth_save <- function(auth, name) {
 #' @keywords internal
 auth_load <- function(name = NULL) {
   if (is.null(name)) {
-    cli::cli_inform("Loading default last.fm credentials.")
+    crayon::silver("Loading default last.fm credentials.")
     name <- "default"
   }
   path <- auth_path(paste0(name, ".rds"))
@@ -66,6 +66,5 @@ auth_load <- function(name = NULL) {
     lastfm_auth()
   }
 
-  cli::cli_inform("Reading auth from '{path}'")
   invisible(readRDS(path))
 }
