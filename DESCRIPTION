@@ -14,6 +14,7 @@ LazyData: true
 RoxygenNote: 7.1.2
 Imports:
     cli,
+    digest,
     dplyr,
     glue,
     httr,
@@ -22,10 +23,14 @@ Imports:
     logger,
     lubridate,
     magrittr,
+    progress,
     purrr,
+    rappdirs,
     rlang,
+    stringi,
     tibble,
-    usethis
+    usethis,
+    withr
 Suggests: 
     rmarkdown,
     knitr,
