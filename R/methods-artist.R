@@ -63,7 +63,7 @@ raw_artist_search <- function(artist, .start_page = 1, .n_pages = NULL) {
 raw_artist_get_info <- function(artist = NULL, mbid = NULL, autocorrect = TRUE, username = NULL, lang = NULL) {
   params <- sanitize_artist_search_parameters(artist, mbid)
 
-  lastfmr(
+  lastfm(
     method = "artist.getInfo",
     result_node = "artist",
     artist = params[["artist"]],
@@ -78,7 +78,7 @@ raw_artist_get_info <- function(artist = NULL, mbid = NULL, autocorrect = TRUE, 
 #' @export
 raw_artist_get_similar <- function(artist = NULL, mbid = NULL, autocorrect = TRUE) {
   params <- sanitize_artist_search_parameters(artist, mbid)
-  lastfmr(
+  lastfm(
     method = "artist.getSimilar",
     result_node = "similarartists",
     artist = params[["artist"]],
@@ -91,7 +91,7 @@ raw_artist_get_similar <- function(artist = NULL, mbid = NULL, autocorrect = TRU
 #' @export
 raw_artist_get_tags <- function(artist = NULL, mbid = NULL, autocorrect = TRUE, username = NULL) {
   params <- sanitize_artist_search_parameters(artist, mbid)
-  lastfmr(
+  lastfm(
     method = "artist.getTags",
     artist = params[["artist"]],
     mbid = params[["mbid"]],

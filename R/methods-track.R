@@ -74,7 +74,7 @@ track_search <- function(track, artist = NULL, .start_page = 1, .n_pages = NULL)
 raw_track_get_info <- function(track = NULL, artist = NULL, mbid = NULL, autocorrect = TRUE, username = NULL, lang = NULL) {
   params <- sanitize_raw_track_get_info_parameters(artist, track, mbid)
 
-  lastfmr(
+  lastfm(
     method = "track.getInfo",
     result_node = "track",
     artist = params[["artist"]],
@@ -110,7 +110,7 @@ raw_track_get_info <- function(track = NULL, artist = NULL, mbid = NULL, autocor
 raw_track_get_similar <- function(track = NULL, artist = NULL, mbid = NULL, autocorrect = TRUE, lang = NULL) {
   params <- sanitize_raw_track_get_info_parameters(artist, track, mbid)
 
-  lastfmr(
+  lastfm(
     method = "track.getSimilar",
     result_node = "similartracks",
     artist = params[["artist"]],

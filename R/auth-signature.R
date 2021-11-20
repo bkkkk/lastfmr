@@ -15,7 +15,7 @@
 #' The signature is then added as extra parameter named `api_sig`.
 #'
 #' These functions are not designed to be invoked directly. Requests are signed
-#' by default when using [lastfmr()] and all other dependent raw and tidy
+#' by default when using [lastfm()] and all other dependent raw and tidy
 #' endpoint functions.
 #'
 #' *    [add_signature()] takes a list with request parameters and an auth_client

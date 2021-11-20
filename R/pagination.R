@@ -33,7 +33,7 @@ paginate <- function(method, ..., result_node = NULL, .start_page = 1, .n_pages 
   withr::defer(pb$terminate())
 
   repeat ({
-    resp <- lastfmr(method, ..., result_node = result_node, .page = .start_page + i - 1)
+    resp <- lastfm(method, ..., result_node = result_node, .page = .start_page + i - 1)
 
     out[[i]] <- resp
 

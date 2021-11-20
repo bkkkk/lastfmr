@@ -65,7 +65,7 @@ raw_album_search <- function(album, .start_page = 1, .n_pages = NULL) {
 raw_album_get_info <- function(artist = NULL, album = NULL, mbid = NULL, autocorrect = TRUE, username = NULL, lang = NULL) {
   params <- sanitize_raw_album_get_info_parameters(artist, album, mbid)
 
-  lastfmr(
+  lastfm(
     method = "album.getInfo",
     result_node = "album",
     artist = params[["artist"]],

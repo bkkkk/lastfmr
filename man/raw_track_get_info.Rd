@@ -27,7 +27,7 @@ raw_track_get_info(
 \item{lang}{(Optional) The biography language.}
 }
 \value{
-A lastfmr API object, see \code{\link[=lastfmr]{lastfmr()}} for information.
+A lastfmr API object, see \code{\link[=lastfm]{lastfm()}} for information.
 }
 \description{
 The track can be retrieved by:
