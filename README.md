@@ -8,7 +8,7 @@
 [![R-CMD-check](https://github.com/bkkkk/lastfmr/workflows/R-CMD-check/badge.svg)](https://github.com/bkkkk/lastfmr/actions)
 <!-- badges: end -->
 
-The goal of lastfmr is to simplify the work of interacting with the
+The goal of LastFMr is to simplify the work of interacting with the
 last.fm API to get information about your favourite artists, albums, and
 collecting scrobbles in a tidy format. Pagination is taken care of for
 you and the data is organized with sensible column names and formatting.
