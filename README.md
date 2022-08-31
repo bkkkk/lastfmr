@@ -64,7 +64,7 @@ API function. For each of the endpoints there are 2 functions:
 -   A “tidy” function that returns a concatenated `tibble` with more
     sensible column names and flattened nested structures.
 
-The function names are mapped directly from the endpoint name
+The function names are mapped directly from the endpoint name.
 
 Below is a summary of endpoint support:
 
